@@ -3,19 +3,34 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  background-color:${({theme})=> theme.COLORS.BG_600} ;
 
   display: grid;
-  grid-template-rows: 105rem auto;
+  
+  grid-template-rows: 104rem auto 77rem;
   grid-template-areas: 
   "header"
-  "content";
+  "content"
+  "footer";
 
   > main {
     grid-area: content;
-    overflow-y: scroll;
     padding: 64rem 0;
 
   }
+
+  >.details{
+    display: flex;
+    flex-direction: row;
+    width: 687rem;
+    gap: 200px;
+  }
+
+  > h1{
+    margin-bottom: 20rem;
+  }
+
+
  
 `;
 
@@ -26,17 +41,17 @@ export const Links = styled.ul`
     margin-top: 12rem;
     text-decoration: none;
     a {
-      color: ${({theme})=> theme.COLORS.WHITE}
+      color: ${({theme})=> theme.COLORS.WHITE};
     }
   }
 `
 
 export const Content = styled.div`
-  max-width: 550rem;
+  max-width: 1124rem;
   margin: 0 auto;
 
   display: flex;
-  flex-direction: column;
+  
 
   > button:first-child{
     align-self: end;

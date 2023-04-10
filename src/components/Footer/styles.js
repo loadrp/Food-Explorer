@@ -1,20 +1,22 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const Container = styled.header`
-  grid-area: header;
+export const Container = styled.footer`
+  grid-area: footer;
 
-  height: 105rem;
+  height: 77rem;
   width: 100%;
+  background-color: ${({theme})=> theme.COLORS.BG_700};
 
   border-bottom-width: 1rem;
   border-bottom-style: solid;
-  border-bottom-color: ${({theme})=> theme.COLORS.BG_700};
+  border-bottom-color: ${({theme})=> theme.COLORS.BG_1000};
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  padding: 0 80rem;
+  padding: 0 123rem;
   
 
 `;

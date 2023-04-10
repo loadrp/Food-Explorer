@@ -1,5 +1,5 @@
 import { FiPlus, FiSearch } from 'react-icons/fi'
-import { Container, Brand, Menu, Search, Content, NewNote, HeaderStyle } from './styles'
+import { Container, Brand, Menu, Search, Content, NewNote, Cards } from './styles'
 import { Header } from '../../components/Header'
 import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
@@ -8,6 +8,10 @@ import { Note } from '../../components/Note'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
+import { HeroSection } from '../../components/Hero Section'
+import { Footer } from '../../components/Footer'
+import { FoodCard } from '../../components/FoodCard'
+
 
 
 export function Home({ }) {
@@ -58,56 +62,14 @@ export function Home({ }) {
 
   return (
     <Container>
-      {/* <Brand>
-        <h1>Food Explorer</h1>
-      </Brand> */}
       <Header />
-      {/* <Menu>
-        <li>
-          <ButtonText
-            title="Todas Tags"
-            onClick={() => handleTagSelected("all")}
-            isActive={tagsSelected.length === 0}
-          />
-        </li>
-        {
-          tags && tags.map(tag => (
-            <li key={String(tag.id)}>
-              <ButtonText
-                title={tag.name}
-                onClick={() => handleTagSelected(tag.name)}
-                isActive={tagsSelected.includes(tag.name)}
-              />
-            </li>
-          ))
-        }
-
-
-      </Menu> */}
-      {/* <Search>
-        <Input
-          placeholder="Pesquisar pelo título"
-          icon={FiSearch}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-
-      </Search> */}
       <Content>
-        <Section title="Minhas Notas">
-          {
-            notes.map(note => (
-              <Note key={String(note.id)} data={note} onClick={() => handleDetails(note.id)}></Note>
-            ))
-          }
-
-        </Section>
+        <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
       </Content>
-
-      {/* <NewNote to="/new">
-        <FiPlus />
-        Criar nota
-
-      </NewNote> */}
+      <Footer />
+      <Cards>
+        <FoodCard title={"Spaguetti Gambe"} description={"Massa fresca com camarões e pesto. "} price={"R$ 79,97"} />
+      </Cards>
     </Container>
   )
 }

@@ -19,15 +19,17 @@ export function Header() {
   
   return(
     <Container>
-      <div>
+      <div className="logo">
         <img src={Logo} width={30} height={30} alt='logo'/>
         <h2>Food Explorer</h2>
      
       </div>
       <Profile to="/profile">
       </Profile>
-        
+      <div className="input-style">
       <Input placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
+
+      </div>
       
       <Button icon={FiShoppingBag} title={'Pedidos'}/>
       <Logout  onClick={signOut}>

@@ -7,5 +7,5 @@ export const Container = styled.span`
   margin-right: 6rem;
 
   color: ${({theme})=> theme.COLORS.WHITE};
-  background-color: ${({theme})=> theme.COLORS.ORANGE};
+  background-color: ${({theme})=> theme.COLORS.BG_1000};
 `

@@ -6,18 +6,21 @@ export const Container = styled.header`
 
   height: 105rem;
   width: 100%;
+  background-color: ${({theme})=> theme.COLORS.BG_700};
 
   border-bottom-width: 1rem;
   border-bottom-style: solid;
-  border-bottom-color: ${({theme})=> theme.COLORS.BG_700};
+  border-bottom-color: ${({theme})=> theme.COLORS.BG_900};
 
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
 
   padding: 0 80rem;
+ 
 
-  >div{
+  >.logo{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +29,14 @@ export const Container = styled.header`
     width: 230rem;
     
     font-size: 12rem;
+  }
+  >button{
+    width: 216rem;
+  }
+
+  >.input-style{
+    width: 516rem;
+    margin-right: 32rem;
   }
   
 

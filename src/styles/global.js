@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+
 export default createGlobalStyle`
   * {
     margin:0;
@@ -18,7 +19,7 @@ export default createGlobalStyle`
     
   }
   body, input, button, textarea {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', 'Poppins', serif;
     font-size: 16rem;
     outline: none;
   }

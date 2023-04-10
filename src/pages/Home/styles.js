@@ -7,19 +7,26 @@ export const Container = styled.div`
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 104rem auto 77rem;
+  grid-template-rows: 104rem auto auto 77rem;
   grid-template-areas: 
   "header"
   "content"
+  "cards"
   "footer";
   background-color: ${({theme}) => theme.COLORS.BG_800};
 `;
 
-export const HeaderStyle = styled.div`
-grid-area: "header";
-gap: 50px;
-`;
-
+export const Cards = styled.div`
+  grid-area: cards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: ${({theme})=> theme.COLORS.BG_700};
+  background-color: ${({theme})=> theme.COLORS.BG_900};
+`
 
 export const Brand = styled.div`
   grid-area: brand;
@@ -74,4 +81,5 @@ export const NewNote= styled(Link)`
   }
 
 `;
+
 

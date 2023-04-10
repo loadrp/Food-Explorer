@@ -7,6 +7,8 @@ import { ButtonText } from '../../components/ButtonText'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
+import { Footer } from '../../components/Footer'
+import  PratoImg  from '../../assets/prato1.png'
 
 export function Details() {
   const [data, setData] = useState(null);
@@ -38,17 +40,27 @@ export function Details() {
       <Header />
       {
         data &&
+            
         <main>
           <Content>
-            <ButtonText title="Excluir nota" onClick={handleRemove}/>
-            <h1>
-              {data.title}
-            </h1>
-            <p>
-              {data.description}
-            </p>
+            <img width={390} height={390} src={PratoImg} alt="prato" />
+            <div className="details">
+              <h1>
+              Salada Ravanello
+              </h1>
+              <p>
+              Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.
+              </p>
+              <Tag title={"Cebola"}/>
+              <Tag title={"Cebola"}/>
+              <Tag title={"Cebola"}/>
+              <Button title="Incluir R$ 25,00" onClick={handleBack}>
+              </Button>
+              
+            </div>
+           
 
-            {
+            {/* {
               data.links &&
               <Section title="Links úteis">
                 <Links>
@@ -78,14 +90,15 @@ export function Details() {
                 }
                 <Tag title="nodejs" />
               </Section>
-            }
+            } */}
 
+            
 
-            <Button title="Voltar" onClick={handleBack}>
-            </Button>
           </Content>
+          
         </main>
       }
+      <Footer/>
 
     </Container>
   )
