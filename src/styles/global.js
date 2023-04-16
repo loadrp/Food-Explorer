@@ -14,7 +14,7 @@ export default createGlobalStyle`
 
   body {
     background-color: ${({ theme }) => theme.COLORS.BG_800};
-    color: ${({ theme }) => theme.COLORS.WHITE};
+    color: ${({ theme }) => theme.COLORS.FONT_WHITE};
     -webkit-font-smoothing: antialiased;
     
   }
@@ -22,6 +22,11 @@ export default createGlobalStyle`
     font-family: 'Roboto', 'Poppins', serif;
     font-size: 16rem;
     outline: none;
+  }
+
+  h1,h2{
+    font-family: 'Poppins';
+    font-weight: 400;
   }
 
   a{

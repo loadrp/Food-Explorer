@@ -1,0 +1,4 @@
+https://food-explorer-rest.netlify.app/
+https://foodexplorer-app.netlify.app/SignUp
+https://foodexplorer-app.netlify.app/
+https://food3xplorer.netlify.app/

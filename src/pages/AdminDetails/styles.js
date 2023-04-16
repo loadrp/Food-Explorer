@@ -91,8 +91,6 @@ export const DetailsWrapper = styled.div`
   display: flex;
   align-items: center;
   width: 294px;
-  
-  
   margin-top: 46rem;
 `;
 

@@ -1,20 +1,41 @@
-import { Container } from "./style";
+import { Container, HeartIconWrapper, Wrapper } from "./style";
 import { SlHeart } from 'react-icons/sl'
-import PratoIMG  from '../../assets/prato1.png'
+import { AiFillHeart } from 'react-icons/ai'
+import PratoIMG from '../../assets/prato1.png'
+import IncrementDecrement from "../IncrementalDecremental";
+import { useState } from "react";
 
 
-export function FoodCard({title, description, price}) {
+export function FoodCard({ title, description, price, imgSrc, imgAlt }) {
+
+  const [isFavorite, setIsFavorite] = useState(true);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
+  };
+
+
   return (
     <Container>
       <>
-        <img src={PratoIMG} alt="" />
-        {SlHeart}
+        
+        <i>{isFavorite ? 
+        <SlHeart onClick={handleFavoriteClick} size={22}/> : 
+        <AiFillHeart onClick={handleFavoriteClick} size={22}/>}      
+        </i>
+        
+        <a href="/details">
+        <img src={imgSrc} alt={imgAlt} />
+        
         <h2>{title}</h2>
         <p>{description}</p>
         <p className="price">{price}</p>
-        <button>Incluir</button>
+        </a>
+        <Wrapper>
+          <IncrementDecrement />
+          <button>Incluir</button>
+        </Wrapper>
       </>
-
     </Container>
 
 

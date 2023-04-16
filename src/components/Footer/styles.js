@@ -6,6 +6,8 @@ export const Container = styled.footer`
 
   height: 77rem;
   width: 100%;
+  
+  margin: 0 auto;
   background-color: ${({theme})=> theme.COLORS.BG_700};
 
   border-bottom-width: 1rem;
@@ -17,6 +19,14 @@ export const Container = styled.footer`
   align-items: center;
 
   padding: 0 123rem;
+
+  > .footer-content{
+    min-width: 1120px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
   
 
 `;
@@ -24,6 +34,7 @@ export const Container = styled.footer`
 export const Profile = styled(Link)`
   display: flex;
   align-items: center;
+ 
 
   > img {
     width: 56rem;
@@ -51,6 +62,7 @@ export const Profile = styled(Link)`
 export const Logout = styled.button`
   border: none;
   background: none;
+  
 
   >svg {
     color:${({theme})=> theme.COLORS.ORANGE};

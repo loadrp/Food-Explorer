@@ -1,21 +1,16 @@
 import { FiPlus, FiSearch } from 'react-icons/fi'
 import { Container, Brand, Menu, Search, Content, NewNote, Cards } from './styles'
 import { Header } from '../../components/Header'
-import { ButtonText } from '../../components/ButtonText'
-import { Input } from '../../components/Input'
-import { Section } from '../../components/Section'
-import { Note } from '../../components/Note'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
 import { HeroSection } from '../../components/Hero Section'
 import { Footer } from '../../components/Footer'
-import { FoodCard } from '../../components/FoodCard'
 import SliderCards from '../../components/SliderCards'
 
 
 
-export function Home({ }) {
+export function AdminHome({ }) {
   const [tags, setTags] = useState("");
   const [tagsSelected, setTagsSelected] = useState([]);
   const [notes, setNotes] = useState([]);

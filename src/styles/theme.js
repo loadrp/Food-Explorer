@@ -6,6 +6,10 @@ export default {
     BG_600:"#1E1E1E", 
     BG_1000:"#192227",
     BG_200: "#000204",
+    BG_100: "#000A0F",
+
+    FONT_WHITE:"#E1E1E6",
+    
 
     WHITE: "#FFFFFF",
     ORANGE: "#750310",

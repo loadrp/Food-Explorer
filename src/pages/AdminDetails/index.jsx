@@ -8,10 +8,9 @@ import { api } from '../../services/api'
 import { Footer } from '../../components/Footer'
 import  PratoImg  from '../../assets/prato1.png'
 import { BsChevronLeft } from 'react-icons/bs'
-import IncrementDecrement from '../../components/IncrementalDecremental'
 
 
-export function Details() {
+export function AdminDetails() {
   const [data, setData] = useState(null);
   const params = useParams();
   const navigate = useNavigate();
@@ -57,8 +56,8 @@ export function Details() {
               <Tag title={"Cebola"}/>
               <Tag title={"Cebola"}/>
               <DetailsWrapper>
-              <IncrementDecrement/>
-              <Button title="Incluir R$ 25,00" onClick={handleBack}>
+        
+              <Button title="Editar Prato" onClick={handleBack}>
               </Button>
               </DetailsWrapper>
               
