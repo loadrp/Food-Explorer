@@ -6,7 +6,7 @@ import IncrementDecrement from "../IncrementalDecremental";
 import { useState } from "react";
 
 
-export function FoodCard({ title, description, price, imgSrc, imgAlt }) {
+export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin }) {
 
   const [isFavorite, setIsFavorite] = useState(true);
 
@@ -32,8 +32,10 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt }) {
         <p className="price">{price}</p>
         </a>
         <Wrapper>
-          <IncrementDecrement />
-          <button>Incluir</button>
+          {isAdmin ? <button>Editar</button> 
+          : [<IncrementDecrement/> , <button>Incluir</button>]}
+
+
         </Wrapper>
       </>
     </Container>

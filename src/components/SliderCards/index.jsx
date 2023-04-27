@@ -10,7 +10,7 @@ import {
 } from "./style";
 
 
-export default function SliderCards({ cardTitle }) {
+export default function SliderCards({ cardTitle, isAdmin }) {
   const foods = [
     { title: "Food 1", description: "Description 1", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
     { title: "Food 2", description: "Description 2", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
@@ -42,7 +42,7 @@ export default function SliderCards({ cardTitle }) {
 
       </Title>
 
-
+      
       <Slider>
         {foods.slice(firstDisplayed, firstDisplayed + 4).map((food, index) => (
           <FoodCardWrapper key={index}  >
@@ -53,6 +53,7 @@ export default function SliderCards({ cardTitle }) {
               price={food.price}
               imgAlt={food.imgAlt}
               imgSrc={food.imgSrc}
+              isAdmin={isAdmin}
 
             />
           </FoodCardWrapper>
@@ -68,6 +69,7 @@ export default function SliderCards({ cardTitle }) {
         
 
       </Slider>
+      
 
     </>
   );

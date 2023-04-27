@@ -60,10 +60,10 @@ export function AdminHome({ }) {
     <Container>
       <Header />
       <Content>
-        <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
-      <SliderCards cardTitle={"Sobremesas"}/>
-      <SliderCards cardTitle={"Sobremesas"}/>
-      <SliderCards cardTitle={"Sobremesas"}/>
+        <HeroSection title={"Bem-vindo Admin"} description={"Edite os pratos que forem necessários :)"} />
+      <SliderCards isAdmin cardTitle={"Sobremesas"}/>
+      <SliderCards isAdmin cardTitle={"Sobremesas"}/>
+      <SliderCards isAdmin cardTitle={"Sobremesas"}/>
       </Content>
       <Footer />
     </Container>

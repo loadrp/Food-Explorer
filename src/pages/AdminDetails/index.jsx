@@ -39,7 +39,7 @@ export function AdminDetails() {
     <Container>
       <Header />
       {
-        data &&
+       /* data &&*/
             
         <main>
           <button onClick={handleBack}><BsChevronLeft size={20} />Voltar</button>

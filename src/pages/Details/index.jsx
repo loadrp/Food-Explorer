@@ -40,7 +40,7 @@ export function Details() {
     <Container>
       <Header />
       {
-        data &&
+        
             
         <main>
           <button onClick={handleBack}><BsChevronLeft size={20} />Voltar</button>

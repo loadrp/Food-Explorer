@@ -5,8 +5,8 @@ export const Container = styled.button`
   background-color: ${({theme})=>theme.COLORS.BG_700};
   border: none;
   border-radius: 10rem;
-  padding: 22rem;
-  margin-bottom: 16rem;
+  padding: 8rem;
+  margin-bottom: 8rem;
 
   > h1{
     flex: 1;
