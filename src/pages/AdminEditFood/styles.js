@@ -134,7 +134,10 @@ export const Form = styled.form`
     margin-left: auto;
     margin-top: 20px;
 
-  
+    >button:nth-child(1){
+      margin-right: 20rem;
+      background-color: ${({theme}) => theme.COLORS.BG_800};
+    }
 
   }
 

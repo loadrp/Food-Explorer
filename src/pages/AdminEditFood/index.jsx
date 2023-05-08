@@ -14,7 +14,7 @@ import { Footer } from '../../components/Footer'
 
 
 
-export function AdminNewFood() {
+export function AdminEditFood() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -192,7 +192,9 @@ export function AdminNewFood() {
           </Wrapper>
           
           <div>
-        
+          <Button
+            title="Excluir Prato"
+            onClick={handleNewNote} />
              <Button
             title="Salvar Alterações"
             onClick={handleNewNote} />
