@@ -25,6 +25,12 @@ export const Container = styled.button`
     height: 22px;
     width: 26px;
   }
+  @media (max-width:768px) {
+    max-height:32rem;
+    max-width:162rem;
+    padding: 0;
+    font-size:14px;
+  }
 
 `;
 

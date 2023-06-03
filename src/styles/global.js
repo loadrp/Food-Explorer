@@ -13,7 +13,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.COLORS.BG_800};
+    background-color: ${({ theme }) => theme.COLORS.BG_100};
     color: ${({ theme }) => theme.COLORS.FONT_WHITE};
     -webkit-font-smoothing: antialiased;
     
@@ -28,6 +28,9 @@ export default createGlobalStyle`
     font-family: 'Poppins';
     font-weight: 400;
   }
+  img{
+    max-width: 100%;
+  }
 
   a{
     text-decoration: none;
@@ -40,4 +43,9 @@ export default createGlobalStyle`
   button:hover, a:hover {
     filter: brightness(0.9);
   }
+
+  @media screen and (max-width: 350px) {
+    
+ 
+}
 `;

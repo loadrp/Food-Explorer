@@ -18,7 +18,7 @@ export function Footer() {
   return(
     <Container>
       <div className="footer-content">
-        <img width={186} height={30} src={FooterLogo} alt={'Logo Food Explorer'}/>
+        <img src={FooterLogo} alt={'Logo Food Explorer'}/>
         <p>© 2023 - Todos os direitos reservados.</p>
       </div>
 

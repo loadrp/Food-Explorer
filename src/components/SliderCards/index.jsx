@@ -23,15 +23,26 @@ export default function SliderCards({ cardTitle, isAdmin }) {
   const [firstDisplayed, setFirstDisplayed] = useState(0);
 
   const displayNext = () => {
-    if (firstDisplayed + 4 < foods.length) {
-      setFirstDisplayed(firstDisplayed + 1);
+    if (firstDisplayed < foods.length) {
+      console.log(firstDisplayed,setFirstDisplayed)
+      setFirstDisplayed(firstDisplayed);
     }
+    else {
+      console.log(firstDisplayed,setFirstDisplayed)
+      setFirstDisplayed(5);
+    }
+ 
   };
 
   const displayPrev = () => {
     if (firstDisplayed > 0) {
       setFirstDisplayed(firstDisplayed - 1);
     }
+    else {
+      setFirstDisplayed(foods.length - 1);
+    }
+ 
+   
   };
 
   return (
@@ -44,7 +55,7 @@ export default function SliderCards({ cardTitle, isAdmin }) {
 
       
       <Slider>
-        {foods.slice(firstDisplayed, firstDisplayed + 4).map((food, index) => (
+        {foods.slice(firstDisplayed, firstDisplayed+5).map((food, index) => (
           <FoodCardWrapper key={index}  >
 
             <FoodCard
@@ -60,11 +71,11 @@ export default function SliderCards({ cardTitle, isAdmin }) {
         ))}
         
         
-          <PrevButton onClick={displayNext}>
-            <BsChevronLeft size={40} />
+          <PrevButton onClick={displayPrev}>
+            <BsChevronLeft size={25} />
           </PrevButton>
-          <NextButton onClick={displayPrev}>
-            <BsChevronRight size={40} />
+          <NextButton onClick={displayNext}>
+            <BsChevronRight size={25} />
           </NextButton>
         
 

@@ -15,17 +15,21 @@ export const Container = styled.footer`
   border-bottom-color: ${({theme})=> theme.COLORS.BG_1000};
 
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  
 
   padding: 0 123rem;
 
   > .footer-content{
-    min-width: 1120px;
+    max-width: 1120px;
     display: flex;
     margin: 0 auto;
     align-items: center;
-    justify-content: space-between;
+    gap: 20rem;
+    justify-content: space-around;
+
+    @media (max-width: 768px){
+      font-size: 12rem;
+    }
   }
   
 
@@ -40,6 +44,8 @@ export const Profile = styled(Link)`
     width: 56rem;
     height: 56rem;
     border-radius: 50%;
+    object-fit: cover;
+    
   }
 
   >div {
@@ -47,6 +53,7 @@ export const Profile = styled(Link)`
     flex-direction: column;
     margin-left: 16rem;
     line-height: 24rem;
+    
 
     span {
       font-size: 14rem;

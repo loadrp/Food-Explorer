@@ -18,6 +18,17 @@ export const Container = styled.header`
   margin: 0 auto;
 
   padding: 0 80rem;
+
+  >svg{
+    display: none;
+  }
+
+  @media (max-width: 768px){
+    padding: 0 10remm;
+    
+    
+
+  }
  
 
   >.logo{
@@ -26,9 +37,20 @@ export const Container = styled.header`
     justify-content: center;
     gap: 10px;
     margin-right: 32rem;
-    width: 230rem;
-    
     font-size: 12rem;
+
+    @media (max-width:768px){
+      width: 100%;
+      height: 100%;
+      gap: 16px;
+      justify-content: space-between;
+
+      >svg{
+      display: block;
+      font-size: 18rem;
+    
+      }
+    }
   }
   >button{
     width: 216rem;
@@ -37,6 +59,32 @@ export const Container = styled.header`
   >.input-style{
     width: 516rem;
     margin-right: 32rem;
+  }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+
+    >.input-style {
+    display: none;
+  }
+
+  >button{
+    display: none;
+  }
+
+   /* Estilos para o menu sanduíche */
+   .hamburger-menu {
+    display: none; /* Oculta o ícone do menu por padrão */
+    cursor: pointer;
+    margin-right: 32rem;
+  }
+
+  .line {
+    width: 25px;
+    height: 3px;
+    background-color: ${({theme})=> theme.COLORS.WHITE};
+    margin: 5px 0;
+  }
   }
   
 
@@ -79,4 +127,7 @@ export const Logout = styled.button`
   }
 
 `
+
+
+
 

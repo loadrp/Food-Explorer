@@ -4,6 +4,8 @@ import { AiFillHeart } from 'react-icons/ai'
 import PratoIMG from '../../assets/prato1.png'
 import IncrementDecrement from "../IncrementalDecremental";
 import { useState } from "react";
+import { Button } from "../Button";
+
 
 
 export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin }) {
@@ -28,12 +30,12 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
         <img src={imgSrc} alt={imgAlt} />
         
         <h2>{title}</h2>
-        <p>{description}</p>
+        <p className="description">{description}</p>
         <p className="price">{price}</p>
         </a>
         <Wrapper>
-          {isAdmin ? <button>Editar</button> 
-          : [<IncrementDecrement/> , <button>Incluir</button>]}
+          {isAdmin ? <Button title={"Editar"}></Button> 
+          : [<IncrementDecrement/> , <Button title={"Incluir"}></Button>]}
 
 
         </Wrapper>

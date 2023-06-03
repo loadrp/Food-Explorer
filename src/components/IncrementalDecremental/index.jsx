@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { Wrapper, Button, Value } from './style'
+import { Wrapper, ButtonCard, Value } from './style'
 
 const IncrementDecrement = ({ value, onIncrement, onDecrement }) => {
   const [count, setCount] = useState(0);
@@ -21,9 +21,9 @@ const IncrementDecrement = ({ value, onIncrement, onDecrement }) => {
  
     return (
       <Wrapper>
-        <Button onClick={decrementCount}>-</Button>
+        <ButtonCard onClick={decrementCount}>-</ButtonCard>
         <Value>{count.toString().padStart(2, '0')}</Value>
-        <Button onClick={incrementCount}>+</Button>
+        <ButtonCard onClick={incrementCount}>+</ButtonCard>
       </Wrapper>
     );
   
