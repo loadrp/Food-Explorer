@@ -43,9 +43,9 @@ export function Details() {
         
             
         <main>
-          <button onClick={handleBack}><BsChevronLeft size={20} />Voltar</button>
+          <button onClick={handleBack}><BsChevronLeft/>Voltar</button>
           <Content>
-            <img width={390} height={389} src={PratoImg} alt="prato" />
+            <img src={PratoImg} alt="prato" />
             <div className="details">
               <h1>
               Salada Ravanello
@@ -57,9 +57,12 @@ export function Details() {
               <Tag title={"Cebola"}/>
               <Tag title={"Cebola"}/>
               <DetailsWrapper>
+              <div>
               <IncrementDecrement/>
               <Button title="Incluir R$ 25,00" onClick={handleBack}>
               </Button>
+              </div>
+              
               </DetailsWrapper>
               
             </div>

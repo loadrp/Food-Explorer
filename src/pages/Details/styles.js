@@ -27,9 +27,15 @@ export const Container = styled.div`
       font-weight: "400";
       font-size: 24rem;
       margin: 0 auto;
+
+      @media (max-width: 768px){
+      font-size: 16rem;
+      }
     }
 
-  
+  @media (max-width: 768px){
+    max-width: 400px;
+  }
  }`;
 
 export const Links = styled.ul`
@@ -49,6 +55,20 @@ export const Content = styled.div`
   margin: 0 auto;
 
   display: flex;
+
+  @media (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    
+    }
+
+  >img{
+    @media (max-width: 768px){
+      
+      width: 264rem;
+      height: 264rem;
+    }
+    }
   
 
   > button:first-child{
@@ -56,22 +76,34 @@ export const Content = styled.div`
   }
 
   >.details{
-    width: 687rem;
+    max-width: 500rem;
     height: 300rem;
     margin-left: 50rem;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px){
+    max-width: 250rem;
+    margin: 0 auto;
+    }
     
 
     >h1{
       margin-bottom: 24rem;
+      @media (max-width: 768px){
+      font-size: 25rem;
+      }
     }
     >p{
       margin-bottom: 24rem;
+      @media (max-width: 768px){
+      font-size: 16rem;
+      }
     }
     >button{
       margin-top: 24rem;
     }
+    
   }
 
   > h1{

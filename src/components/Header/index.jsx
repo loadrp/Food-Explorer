@@ -4,7 +4,7 @@ import { api } from "../../services/api";
 import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
 import { Button } from "../Button";
 import { Input } from "../Input";
-import { FiMenu, FiSearch, FiLogOut, FiShoppingBag } from "react-icons/fi";
+import { FiMenu, FiSearch, FiLogOut, FiShoppingBag, FiShoppingCart} from "react-icons/fi";
 import Logo from '../../assets/logo.svg'
 
 export function Header() {
@@ -23,12 +23,15 @@ export function Header() {
       
       <div className="logo">
         <FiMenu/>
-        <div style={{display:"flex", gap:"5px",}}>
+        <div style={{display:"flex", gap:"5px", "white-space": "nowrap",}}>
           <img src={Logo} width={30} height={30} alt='logo' />
           <h2>Food Explorer</h2>
         </div>
         
-        <FiMenu/>
+        <div>
+        <FiShoppingCart/>
+          <span>1</span>
+        </div>
         
 
       </div>

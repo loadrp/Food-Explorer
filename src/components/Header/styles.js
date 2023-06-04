@@ -19,17 +19,14 @@ export const Container = styled.header`
 
   padding: 0 80rem;
 
-  >svg{
-    display: none;
-  }
+  
 
   @media (max-width: 768px){
-    padding: 0 10remm;
-    
+    padding: 0 10rem;
+
     
 
   }
- 
 
   >.logo{
     display: flex;
@@ -38,20 +35,48 @@ export const Container = styled.header`
     gap: 10px;
     margin-right: 32rem;
     font-size: 12rem;
+    
+    >svg{
+      display: none;
+    }
+    >div >svg{
+    display: none;
+    }
+    >div >span{
+    display: none;
+    }
 
     @media (max-width:768px){
-      width: 100%;
+      
+    
       height: 100%;
-      gap: 16px;
-      justify-content: space-between;
+      gap: 30rem;
+      justify-content: space-around;
+      margin-right: 5rem;
 
       >svg{
       display: block;
-      font-size: 18rem;
+      font-size: 30rem;
     
+      }
+
+      >div >svg{
+      display: unset;
+      font-size: 24rem;
+      position: relative;
+      }
+      >div >span{
+      display: unset;
+      background-color: ${({theme})=> theme.COLORS.ORANGE};
+      position: absolute;
+      top: 20px;
+      border-radius: 50%;
+      padding: 6rem;
+      font-size: 12px;
       }
     }
   }
+
   >button{
     width: 216rem;
   }
@@ -59,6 +84,9 @@ export const Container = styled.header`
   >.input-style{
     width: 516rem;
     margin-right: 32rem;
+    @media (max-width: 768px) {
+      margin-right: 0rem;
+    }
   }
 
   @media (max-width: 768px) {
