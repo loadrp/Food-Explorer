@@ -98,22 +98,13 @@ export function AdminNewFood() {
           <div className='first-container'>
             <Wrapper>
               <p>Imagem do Prato</p>
-
               <div className='input-file-img'>
-
-
                 <label htmlFor="img-prato">
-                <BsUpload size={18} />
-                 
+                  <BsUpload size={18} />
                   <p>Selecione a imagem</p>
-
                   <input type="file" id="img-prato"></input>
                 </label>
-
               </div>
-
-
-
             </Wrapper>
             <Wrapper>
               <p>Nome</p>
@@ -126,18 +117,19 @@ export function AdminNewFood() {
             <Wrapper>
               <p>Categoria</p>
               <label for="category" id="selectWrapper">
-                
-                  <div id="selectArrow" onClick={()=>{document.querySelector('select')
+
+                <div id="selectArrow" onClick={() => {
+                  document.querySelector('select')
                 }}>
                   <label htmlFor="category">
-                  <BsChevronDown size={20}/>
+                    <BsChevronDown size={20} />
 
                   </label>
-                  </div>
+                </div>
                 <select id="category" >
                   <option value="0" selected disabled>Selecione a categoria do prato</option>
                   <option value="1">Teste1
-                    
+
                   </option>
 
                 </select>
@@ -145,9 +137,6 @@ export function AdminNewFood() {
             </Wrapper>
 
           </div>
-
-
-
 
           <div className="ingredients">
             <div className="ingredients-section">
@@ -182,24 +171,24 @@ export function AdminNewFood() {
               <Input price={"R$"} placeholder={"Preço"}></Input>
             </Wrapper>
           </div>
-          
+
           <Wrapper>
-          <p>Descrição</p>
-          <Textarea
-            placeholder="Observações"
-            onChange={e => setDescription(e.target.value)}
-          />
+            <p>Descrição</p>
+            <Textarea
+              placeholder="Observações"
+              onChange={e => setDescription(e.target.value)}
+            />
           </Wrapper>
-          
+
           <div>
-        
-             <Button
-            title="Salvar Alterações"
-            onClick={handleNewNote} />
+
+            <Button
+              title="Salvar Alterações"
+              onClick={handleNewNote} />
 
 
           </div>
-          
+
         </Form>
 
       </main>

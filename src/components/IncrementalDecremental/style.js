@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ButtonCard = styled.button`
-  background-color: ${({theme}) => theme.COLORS.BG_200};
+  background-color: ${({theme}) => theme.COLORS.BG_100};
   color: #333;
   border: none;
   font-size: 35px;

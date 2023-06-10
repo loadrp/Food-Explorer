@@ -60,7 +60,7 @@ export function AdminHome({ }) {
     <Container>
       <Header />
       <Content>
-        <HeroSection title={"Bem-vindo Admin"} description={"Edite os pratos que forem necessários :)"} />
+        <HeroSection title={"Olá Admin"} description={"Edite os pratos abaixo"} />
       <SliderCards isAdmin cardTitle={"Sobremesas"}/>
       <SliderCards isAdmin cardTitle={"Sobremesas"}/>
       <SliderCards isAdmin cardTitle={"Sobremesas"}/>

@@ -20,15 +20,17 @@ export const Container = styled.footer`
   padding: 0 123rem;
 
   > .footer-content{
-    max-width: 1120px;
+    max-width: 1120rem;
+    margin: auto auto;
     display: flex;
-    margin: 0 auto;
     align-items: center;
-    gap: 20rem;
+    gap: 15rem;
     justify-content: space-around;
 
     @media (max-width: 768px){
-      font-size: 12rem;
+      
+      gap: 5rem;
+      font-size: 10rem;
     }
   }
   

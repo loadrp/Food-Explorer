@@ -18,6 +18,9 @@ export const Container = styled.div`
     grid-area: content;
     padding: 64rem 0;
     margin: 0 auto;
+    @media (max-width: 768px){
+    padding: 20rem 0;
+    }
 
     >button{
       border: none;
@@ -27,7 +30,13 @@ export const Container = styled.div`
       font-weight: "400";
       font-size: 24rem;
       margin: 0 auto;
+      @media (max-width: 768px){
+      font-size: 16rem;
+      }
     }
+    @media (max-width: 768px){
+    max-width: 400px;
+  }
 
   
  }`;
@@ -49,6 +58,19 @@ export const Content = styled.div`
   margin: 0 auto;
 
   display: flex;
+
+  @media (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+    
+  }
+  >img{
+    @media (max-width: 768px){
+      
+      width: 264rem;
+      height: 264rem;
+    }
+  }
   
 
   > button:first-child{
@@ -61,13 +83,24 @@ export const Content = styled.div`
     margin-left: 50rem;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px){
+    max-width: 250rem;
+    margin: 0 auto;
+    }
     
 
     >h1{
       margin-bottom: 24rem;
+      @media (max-width: 768px){
+      font-size: 25rem;
+      }
     }
     >p{
       margin-bottom: 24rem;
+      @media (max-width: 768px){
+      font-size: 16rem;
+      }
     }
     >button{
       margin-top: 24rem;
@@ -90,8 +123,8 @@ export const Content = styled.div`
 export const DetailsWrapper = styled.div`
   display: flex;
   align-items: center;
-  width: 294px;
-  margin-top: 46rem;
+  width: 100%;
+  margin-top: 25rem;
 `;
 
 

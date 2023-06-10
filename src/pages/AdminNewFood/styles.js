@@ -16,6 +16,11 @@ export const Container = styled.div`
   > main {
     grid-area: content;
     overflow-y: auto;
+    @media (max-width:768px) {
+      margin: 2rem 15rem;
+      
+    }
+ 
 
   }
 
@@ -43,6 +48,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       
+      
     }
   }
 
@@ -51,20 +57,18 @@ export const Container = styled.div`
     top: 30%;
     right: 0;
     margin-right: 5rem;
-    cursor: pointer;
+ 
     
   }
 
   #selectWrapper{
-    width: 351px;
+    width: 100%;
     position: relative;
-   
     color: ${({theme}) => theme.COLORS.WHITE};
   }
 
   select{
-    width: 100%;
-    
+ 
     background-color: ${({theme}) => theme.COLORS.BG_800};
     padding: 10rem;
     appearance: none;
@@ -72,7 +76,7 @@ export const Container = styled.div`
     height: 48rem;
     border: none;
     border-radius: 10px;
-    
+    width: 100%;
   }
 
   input[type=file]{
@@ -81,42 +85,73 @@ export const Container = styled.div`
 `
 
 export const Form = styled.form`
-  width: 1120px;
-  margin: 38px auto;
+  max-width: 1120rem;
+  margin: 38rem auto;
 
-  
+  @media (max-width:768px) {
+      display: flex;
+      flex-direction: column;
+      max-width: 550rem;
+      
+    }
+
   > header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 36rem;
 
+    h1{
+      font-size: 25rem;
+      @media (max-width:768px) {
+      font-size: 22rem;
+
+    }
+
+    }
+
     a {
       font-size: 20rem;
       color: ${({theme}) => theme.COLORS.WHITE};
+      @media (max-width:768px) {
+      font-size: 15rem;
+      
+    }
     }
   }
+
   >.first-container{
     display: flex;
     gap:32rem;
     margin-bottom: 32rem;
+
+    > div:nth-child(3){
+    max-width: 100%;
+  }
+
+    @media (max-width:768px) {
+      flex-direction: column;
+      max-width: 700rem;
+      align-items: start;
+      justify-content: start;
+      
+    }
    
   }
   > .ingredients {
     display: flex;
-    margin: 0 auto;
-    width: 1120px;
+    max-width: 100%;
     margin-bottom: 32rem;
   }
 
   > div.ingredients > div:nth-child(2) {
     margin-left: 32rem;
-    width: 250px;
+    max-width: 100%;
   }
 
   > div.ingredients > div.ingredients-section > div{
     display: flex;
-    width: 837px;
+    max-width: 837rem;
     margin-top: 8rem;
     background-color: ${({theme}) => theme.COLORS.BG_800};
     flex-wrap: wrap;
@@ -129,13 +164,15 @@ export const Form = styled.form`
   }
 
   > div:nth-child(5){
-    width: 350px;
-    display: flex;
-    margin-left: auto;
+    
     margin-top: 20px;
+    >button{
+      width: 100%;
+    }
+  }
 
-  
-
+  >button{
+    width: 100%;
   }
 
   `
@@ -145,7 +182,10 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  
+  @media (max-width:768px) {
+    
+      
+    }
  
 
   >p{

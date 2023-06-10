@@ -26,8 +26,7 @@ export const Container = styled.button`
     width: 26px;
   }
   @media (max-width:768px) {
-    max-height:32rem;
-    max-width:162rem;
+    max-height: 48rem;
     padding: 0;
     font-size:14px;
   }

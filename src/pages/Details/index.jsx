@@ -57,7 +57,7 @@ export function Details() {
               <Tag title={"Cebola"}/>
               <Tag title={"Cebola"}/>
               <DetailsWrapper>
-              <div>
+              <div className='increments'>
               <IncrementDecrement/>
               <Button title="Incluir R$ 25,00" onClick={handleBack}>
               </Button>
