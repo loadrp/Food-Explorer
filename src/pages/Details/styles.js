@@ -35,7 +35,13 @@ export const Container = styled.div`
       font-size: 16rem;
       }
     }
-
+  
+  .div-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+  }
+  
   @media (max-width: 768px){
     max-width: 400px;
   }
@@ -82,6 +88,7 @@ export const Content = styled.div`
     max-width: 500rem;
     height: 300rem;
     margin-left: 50rem;
+    margin-right: 20rem;
     align-items: center;
     justify-content: center;
 

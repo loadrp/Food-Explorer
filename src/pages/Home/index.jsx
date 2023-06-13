@@ -12,6 +12,7 @@ import { HeroSection } from '../../components/Hero Section'
 import { Footer } from '../../components/Footer'
 import { FoodCard } from '../../components/FoodCard'
 import SliderCards from '../../components/SliderCards'
+import { DisplayMenu } from '../../components/DisplayMenu'
 
 
 
