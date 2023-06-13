@@ -7,7 +7,7 @@ export const MenuContainer = styled.nav`
   position: fixed;
   top: 0;
   left: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
-  width: 250rem;
+  width: 300rem;
   height: 100vh;
   background-color: ${({ theme }) => theme.COLORS.BG_300};
   transition: left 0.3s ease-in-out;
@@ -51,6 +51,10 @@ export const MenuContent = styled.div`
 `;
 
 export const MenuItem = styled.li`
+  display: flex;
+  gap: 10rem;
+  align-items: center;
+ 
   margin-bottom: 10rem;
   margin-top: 20rem;
   padding: 10rem;

@@ -1,8 +1,12 @@
-import { FiX } from 'react-icons/fi';
+import { FiLogOut, FiX } from 'react-icons/fi';
 import { Search } from '../Search';
 import { MenuContainer, MenuContent, MenuHeader, MenuTitle, CloseIcon, MenuItem } from './styles';
+import { Logout } from '../Header/styles';
+import { useAuth } from '../../hooks/auth';
 
 export function DisplayMenu({ isOpen, toggleMenu }) {
+  const { signOut, user } = useAuth();
+
   return (
     <MenuContainer isOpen={isOpen}>
       <MenuHeader>
@@ -14,7 +18,10 @@ export function DisplayMenu({ isOpen, toggleMenu }) {
         <Search />
         <ul>
           <MenuItem>
-            <a href="/">Teste</a>
+            <Logout onClick={signOut}>
+              <FiLogOut />
+            </Logout>
+            <p onClick={signOut}>Sair</p>
           </MenuItem>
           <MenuItem>
             <a href="/">Teste</a>

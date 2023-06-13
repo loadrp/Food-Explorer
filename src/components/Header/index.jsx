@@ -27,7 +27,7 @@ export function Header() {
       <div className="logo">
         <FiMenu onClick={toggleMenu} />
         <div style={{ display: "flex", gap: "5px", whiteSpace: "nowrap" }}>
-          <img src={Logo} width={30} height={30} alt='logo' onClick={toggleMenu} />
+          <img src={Logo} width={30} height={30} alt='logo' />
           <h2>Food Explorer</h2>
         </div>
 
