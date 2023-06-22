@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
+  margin: 0 auto;
   
-
-  display: grid;
   grid-template-columns: auto;
   grid-template-rows: 104rem auto auto 77rem;
   grid-template-areas: 
@@ -66,11 +65,13 @@ export const Search = styled.div`
 `;
 export const Content = styled.div`
   grid-area: content;
-  padding: 0 90rem;
-  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  max-width: 1120rem;
 
   @media (max-width: 768px){
     padding: 0 15rem;
+    overflow-x: hidden;
   }
 
 `;

@@ -6,7 +6,8 @@ import {
   FoodCardWrapper,
   PrevButton,
   NextButton,
-  Title
+  Title,
+  SliderContainer
 } from "./style";
 
 
@@ -23,65 +24,45 @@ export default function SliderCards({ cardTitle, isAdmin }) {
   const [firstDisplayed, setFirstDisplayed] = useState(0);
 
   const displayNext = () => {
-    if (firstDisplayed < foods.length) {
-      console.log(firstDisplayed,setFirstDisplayed)
-      setFirstDisplayed(firstDisplayed);
+    if (firstDisplayed < foods.length - 1) {
+      setFirstDisplayed((prev) => prev + 1);
     }
-    else {
-      console.log(firstDisplayed,setFirstDisplayed)
-      setFirstDisplayed(5);
-    }
- 
   };
 
   const displayPrev = () => {
     if (firstDisplayed > 0) {
-      setFirstDisplayed(firstDisplayed - 1);
+      setFirstDisplayed((prev) => prev - 1);
     }
-    else {
-      setFirstDisplayed(foods.length - 1);
-    }
- 
-   
   };
 
   return (
     <>
-
       <Title>
         <h2>{cardTitle}</h2>
-
       </Title>
 
-      
-      <Slider>
-        {foods.slice(firstDisplayed, firstDisplayed+5).map((food, index) => (
-          <FoodCardWrapper key={index}  >
-
-            <FoodCard
-              title={food.title}
-              description={food.description}
-              price={food.price}
-              imgAlt={food.imgAlt}
-              imgSrc={food.imgSrc}
-              isAdmin={isAdmin}
-
-            />
-          </FoodCardWrapper>
-        ))}
-        
-        
-          <PrevButton onClick={displayPrev}>
-            <BsChevronLeft size={25} />
-          </PrevButton>
-          <NextButton onClick={displayNext}>
-            <BsChevronRight size={25} />
-          </NextButton>
-        
-
-      </Slider>
-      
-
+      <SliderContainer>
+        <PrevButton onClick={displayPrev}>
+          <BsChevronLeft size={25} />
+        </PrevButton>
+        <Slider>
+          {foods.slice(firstDisplayed, firstDisplayed + 5).map((food, index) => (
+            <FoodCardWrapper key={index}>
+              <FoodCard
+                title={food.title}
+                description={food.description}
+                price={food.price}
+                imgAlt={food.imgAlt}
+                imgSrc={food.imgSrc}
+                isAdmin={isAdmin}
+              />
+            </FoodCardWrapper>
+          ))}
+        </Slider>
+        <NextButton onClick={displayNext}>
+          <BsChevronRight size={25} />
+        </NextButton>
+      </SliderContainer>
     </>
   );
 }

@@ -29,8 +29,8 @@ export const Container = styled.div`
   @media(max-width: 768px){
     margin-bottom: 24rem;
     width: 210rem;
-    max-height: 292rem;
-    padding: 24rem 24rem 24rem 24rem;
+    max-height: 300rem;
+    padding: 0rem 20rem 20rem 20rem;
     font-size: 22px;
     
 
@@ -148,15 +148,14 @@ export const Wrapper = styled.div`
     border-radius: 8px;
     justify-content: center;
     align-items: center;
-    padding: 12px 24px;
-    
+    padding: 12rem 24rem;
     border: none;
 
   }
 
   @media (max-width:768px) {
     flex-direction: column;
-    max-height:32rem;
+    height:32rem;
     max-width:132rem;
     padding: 0;
     

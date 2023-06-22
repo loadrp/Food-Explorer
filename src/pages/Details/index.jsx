@@ -59,11 +59,6 @@ export function Details() {
                 <Tag title={"Cebola"}/>
                 <Tag title={"Cebola"}/>
                 <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
               </div>
               
               <DetailsWrapper>

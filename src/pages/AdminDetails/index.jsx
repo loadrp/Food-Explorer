@@ -37,7 +37,7 @@ export function AdminDetails() {
 
   return (
     <Container>
-      <Header />
+      <Header isAdmin />
       {
        /* data &&*/
             
@@ -52,9 +52,13 @@ export function AdminDetails() {
               <p>
               Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.
               </p>
-              <Tag title={"Cebola"}/>
-              <Tag title={"Cebola"}/>
-              <Tag title={"Cebola"}/>
+              <div className='div-tags'>
+                <Tag title={"Cebola"}/>
+                <Tag title={"Cebola"}/>
+                <Tag title={"Cebola"}/>
+                <Tag title={"Cebola"}/>
+                <Tag title={"Cebola"}/>
+              </div>
               <DetailsWrapper>
         
               <Button title="Editar Prato" onClick={handleBack}>

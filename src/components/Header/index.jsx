@@ -9,7 +9,7 @@ import { FiMenu, FiSearch, FiLogOut, FiShoppingBag, FiShoppingCart } from "react
 import Logo from '../../assets/logo.svg';
 import { DisplayMenu } from "../DisplayMenu";
 
-export function Header() {
+export function Header(isAdmin) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { signOut, user } = useAuth();
 
@@ -23,7 +23,7 @@ export function Header() {
 
   return (
     <Container>
-      <DisplayMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      <DisplayMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} isAdmin={isAdmin}/>
       <div className="logo">
         <FiMenu onClick={toggleMenu} />
         <div style={{ display: "flex", gap: "5px", whiteSpace: "nowrap" }}>

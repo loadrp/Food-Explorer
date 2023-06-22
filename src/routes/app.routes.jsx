@@ -12,7 +12,7 @@ import { AdminEditFood } from '../pages/AdminEditFood'
 export function AppRoutes(){
   return(
     <Routes>
-      <Route path='/new' element={<New/>}/>
+      <Route path='/newfood' element={<New/>}/>
       <Route path='/profile' element={<Profile/>}/>
       <Route path='/details' element={<Details/>}/>
       <Route path='/admindetails' element={<AdminDetails/>}/>

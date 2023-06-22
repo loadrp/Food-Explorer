@@ -4,8 +4,9 @@ import { MenuContainer, MenuContent, MenuHeader, MenuTitle, CloseIcon, MenuItem 
 import { Logout } from '../Header/styles';
 import { useAuth } from '../../hooks/auth';
 
-export function DisplayMenu({ isOpen, toggleMenu }) {
+export function DisplayMenu({ isOpen, toggleMenu, isAdmin }) {
   const { signOut, user } = useAuth();
+  
 
   return (
     <MenuContainer isOpen={isOpen}>
@@ -17,18 +18,16 @@ export function DisplayMenu({ isOpen, toggleMenu }) {
       <MenuContent>
         <Search />
         <ul>
+        {isAdmin ? <MenuItem>Novo prato</MenuItem> : null}
           <MenuItem>
             <Logout onClick={signOut}>
               <FiLogOut />
             </Logout>
             <p onClick={signOut}>Sair</p>
           </MenuItem>
-          <MenuItem>
-            <a href="/">Teste</a>
-          </MenuItem>
-          <MenuItem>
-            <a href="/">Teste</a>
-          </MenuItem>
+          
+          
+        
         </ul>
       </MenuContent>
     </MenuContainer>

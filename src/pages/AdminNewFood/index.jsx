@@ -85,7 +85,7 @@ export function AdminNewFood() {
 
   return (
     <Container>
-      <Header />
+      <Header isAdmin/>
 
       <main>
         <Form>

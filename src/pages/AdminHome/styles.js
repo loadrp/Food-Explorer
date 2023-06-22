@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
+  margin: 0 auto;
   
-
-  display: grid;
   grid-template-columns: auto;
   grid-template-rows: 104rem auto auto 77rem;
   grid-template-areas: 
@@ -14,6 +13,8 @@ export const Container = styled.div`
   "cards"
   "footer";
   background-color: ${({theme}) => theme.COLORS.BG_100};
+
+
 `;
 
 export const Cards = styled.div`
@@ -25,7 +26,7 @@ export const Cards = styled.div`
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: ${({theme})=> theme.COLORS.BG_700};
-  background-color: ${({theme})=> theme.COLORS.BG_900};
+  
 `
 
 export const Brand = styled.div`
@@ -59,13 +60,19 @@ export const Menu = styled.ul`
 `;
 export const Search = styled.div`
   grid-area: search;
-  padding: 64px 64px 0;
+  padding: 64rem 64rem 0;
 
 `;
 export const Content = styled.div`
   grid-area: content;
-  padding: 0 64px;
-  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  max-width: 1120rem;
+
+  @media (max-width: 768px){
+    padding: 0 15rem;
+    overflow-x: hidden;
+  }
 
 `;
 export const NewNote= styled(Link)`

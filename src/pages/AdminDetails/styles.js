@@ -37,6 +37,11 @@ export const Container = styled.div`
     @media (max-width: 768px){
     max-width: 400px;
   }
+  .div-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+  }
 
   
  }`;
@@ -99,7 +104,7 @@ export const Content = styled.div`
     >p{
       margin-bottom: 24rem;
       @media (max-width: 768px){
-      font-size: 16rem;
+      font-size: 14rem;
       }
     }
     >button{
