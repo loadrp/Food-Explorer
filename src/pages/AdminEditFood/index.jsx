@@ -85,12 +85,12 @@ export function AdminEditFood() {
 
   return (
     <Container>
-      <Header isAdmin />
+      <Header isAdmin/>
 
       <main>
         <Form>
           <header>
-            <h1>Adicionar Prato</h1>
+            <h1>Editar Prato</h1>
 
             <Link to="/">
               <BsChevronLeft size={15} /> Voltar</Link>
@@ -98,22 +98,13 @@ export function AdminEditFood() {
           <div className='first-container'>
             <Wrapper>
               <p>Imagem do Prato</p>
-
               <div className='input-file-img'>
-
-
                 <label htmlFor="img-prato">
-                <BsUpload size={18} />
-                 
+                  <BsUpload size={18} />
                   <p>Selecione a imagem</p>
-
                   <input type="file" id="img-prato"></input>
                 </label>
-
               </div>
-
-
-
             </Wrapper>
             <Wrapper>
               <p>Nome</p>
@@ -126,18 +117,19 @@ export function AdminEditFood() {
             <Wrapper>
               <p>Categoria</p>
               <label for="category" id="selectWrapper">
-                
-                  <div id="selectArrow" onClick={()=>{document.querySelector('select')
+
+                <div id="selectArrow" onClick={() => {
+                  document.querySelector('select')
                 }}>
                   <label htmlFor="category">
-                  <BsChevronDown size={20}/>
+                    <BsChevronDown size={20} />
 
                   </label>
-                  </div>
+                </div>
                 <select id="category" >
                   <option value="0" selected disabled>Selecione a categoria do prato</option>
                   <option value="1">Teste1
-                    
+
                   </option>
 
                 </select>
@@ -145,9 +137,6 @@ export function AdminEditFood() {
             </Wrapper>
 
           </div>
-
-
-
 
           <div className="ingredients">
             <div className="ingredients-section">
@@ -182,26 +171,28 @@ export function AdminEditFood() {
               <Input price={"R$"} placeholder={"Preço"}></Input>
             </Wrapper>
           </div>
-          
+
           <Wrapper>
-          <p>Descrição</p>
-          <Textarea
-            placeholder="Observações"
-            onChange={e => setDescription(e.target.value)}
-          />
+            <p>Descrição</p>
+            <Textarea
+              placeholder="Observações"
+              onChange={e => setDescription(e.target.value)}
+            />
           </Wrapper>
-          
-          <div>
-          <Button
-            title="Excluir Prato"
-            onClick={handleNewNote} />
-             <Button
-            title="Salvar Alterações"
-            onClick={handleNewNote} />
+
+          <div style={{display: "flex", gap:"20rem"}}>
+            <Button
+              title="Excluir Prato"
+              bgColor={"#333333"}
+              onClick={handleNewNote} />
+
+            <Button
+              title="Salvar Alterações"
+              onClick={handleNewNote} />
 
 
           </div>
-          
+
         </Form>
 
       </main>
