@@ -11,7 +11,7 @@ import {
 } from "./style";
 
 
-export default function SliderCards({ cardTitle, isAdmin }) {
+export function SliderCards ({ cardTitle, isAdmin }) {
   const foods = [
     { title: "Food 1", description: "Description 1", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
     { title: "Food 2", description: "Description 2", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
@@ -49,6 +49,7 @@ export default function SliderCards({ cardTitle, isAdmin }) {
           {foods.slice(firstDisplayed, firstDisplayed + 5).map((food, index) => (
             <FoodCardWrapper key={index}>
               <FoodCard
+                
                 title={food.title}
                 description={food.description}
                 price={food.price}

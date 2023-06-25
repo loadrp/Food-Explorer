@@ -29,7 +29,7 @@ export function Header(isAdmin) {
         <div style={{ display: "flex", gap: "5px", whiteSpace: "nowrap" }}>
           <img src={Logo} width={30} height={30} alt='logo' />
           <h2>Food Explorer</h2>
-          {isAdmin? <p style={{display: "flex",justifyContent:"center", alignItems: "center"}}>admin</p> : null}
+          {isAdmin? <p style={{display: "flex",justifyContent:"center", alignItems: "center"}}>admin</p> : <p></p>}
         </div>
 
         <div>

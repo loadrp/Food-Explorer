@@ -10,9 +10,8 @@ import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
 import { HeroSection } from '../../components/Hero Section'
 import { Footer } from '../../components/Footer'
-import { FoodCard } from '../../components/FoodCard'
-import SliderCards from '../../components/SliderCards'
-import { DisplayMenu } from '../../components/DisplayMenu'
+import { SliderCards }from '../../components/SliderCards'
+
 
 
 
@@ -48,13 +47,14 @@ export function Home({ }) {
     async function fetchTags() {
       const response = await api.get("/tags")
       setTags(response.data);
+      console.log(response.data)
     }
     fetchTags();
   }, []);
 
   useEffect(() => {
     async function fetchNotes() {
-      const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`)
+      const response = await api.get(`/foods?title=${search}&tags=${tagsSelected}`)
       setNotes(response.data);
 
     }

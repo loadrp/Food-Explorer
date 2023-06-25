@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
 import { HeroSection } from '../../components/Hero Section'
 import { Footer } from '../../components/Footer'
-import SliderCards from '../../components/SliderCards'
+import { SliderCards } from '../../components/SliderCards'
 
 
 

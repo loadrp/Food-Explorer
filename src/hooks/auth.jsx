@@ -5,6 +5,8 @@ import { api } from '../services/api';
 
 const AuthContext = createContext({});
 
+
+
 function AuthProvider({children}){
   const [data, setData] = useState({})
 
@@ -13,13 +15,15 @@ function AuthProvider({children}){
       const response = await api.post('/sessions', {email, password});
       const user = response?.data?.user;
       const token = response?.data?.token;
+      const role = response?.data?.user?.role;
   
       if (user && token) {
-        localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
-        localStorage.setItem("@rocketnotes:token", token );
+        localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
+        localStorage.setItem("@foodexplorer:token", token );
+        
   
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        setData({ user, token })
+        setData({ user, token, role})
       } else {
         throw new Error('Usuário ou token não fornecidos pela API');
       }
@@ -34,8 +38,9 @@ function AuthProvider({children}){
   }
 
   function signOut(){
-    localStorage.removeItem("@rocketnotes:user")
-    localStorage.removeItem("@rocketnotes:token")
+    localStorage.removeItem("@foodexplorer:user")
+    localStorage.removeItem("@foodexplorer:token")
+  
 
     setData({});
   }
@@ -51,7 +56,7 @@ function AuthProvider({children}){
       }
 
       await api.put("/users", user);
-      localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
+      localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
       setData({ user, token: data.token })
       alert("Perfil atualizado!")
     }
@@ -68,8 +73,8 @@ function AuthProvider({children}){
   }
 
     useEffect(()=>{
-    const token = localStorage.getItem("@rocketnotes:token");
-    const user = localStorage.getItem("@rocketnotes:user");
+    const token = localStorage.getItem("@foodexplorer:token");
+    const user = localStorage.getItem("@foodexplorer:user");
 
     if(token && user) {
 
@@ -84,10 +89,8 @@ function AuthProvider({children}){
 
   },[]);
 
-
-
   return(
-    <AuthContext.Provider value= {{signIn , signOut, updateProfile, user: data.user}}>
+    <AuthContext.Provider value= {{signIn , signOut, updateProfile, user: data.user, admin: data.user}}>
       {children}
     </AuthContext.Provider>
   )
@@ -98,4 +101,8 @@ function useAuth(){
   return context
 }
 
+
+
 export {AuthProvider, useAuth};
+
+
