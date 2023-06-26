@@ -58,7 +58,7 @@ export function AdminHome({ }) {
 
   return (
     <Container>
-      <Header isAdmin/>
+      <Header isAdmin={'True'}/>
       <Content>
         <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
       <SliderCards cardTitle={"Sobremesas"} isAdmin/>

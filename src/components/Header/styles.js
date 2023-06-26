@@ -156,6 +156,16 @@ export const Logout = styled.button`
 
 `
 
+export const Counter = styled.span`
+  background-color: ${({ theme }) => theme.COLORS.RED};
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 50%;
+  margin-left: 5px;
+`;
+
 
 
 

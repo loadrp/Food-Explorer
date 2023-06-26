@@ -3,6 +3,7 @@ import { Search } from '../Search';
 import { MenuContainer, MenuContent, MenuHeader, MenuTitle, CloseIcon, MenuItem } from './styles';
 import { Logout } from '../Header/styles';
 import { useAuth } from '../../hooks/auth';
+import { Link } from 'react-router-dom';
 
 export function DisplayMenu({ isOpen, toggleMenu, isAdmin }) {
   const { signOut, user } = useAuth();
@@ -18,15 +19,13 @@ export function DisplayMenu({ isOpen, toggleMenu, isAdmin }) {
       <MenuContent>
         <Search />
         <ul>
-        {isAdmin ? <MenuItem>Novo prato</MenuItem> : null}
+        {isAdmin == 'True'? <MenuItem><Link to={'/newfood'}>Novo prato</Link></MenuItem> : null}
           <MenuItem>
             <Logout onClick={signOut}>
               <FiLogOut />
             </Logout>
             <p onClick={signOut}>Sair</p>
           </MenuItem>
-          
-          
         
         </ul>
       </MenuContent>

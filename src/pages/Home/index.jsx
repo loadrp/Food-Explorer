@@ -1,10 +1,6 @@
 import { FiPlus, FiSearch } from 'react-icons/fi'
 import { Container, Brand, Menu, Search, Content, NewNote, Cards } from './styles'
 import { Header } from '../../components/Header'
-import { ButtonText } from '../../components/ButtonText'
-import { Input } from '../../components/Input'
-import { Section } from '../../components/Section'
-import { Note } from '../../components/Note'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
@@ -62,14 +58,20 @@ export function Home({ }) {
 
   }, [tagsSelected, search])
 
+  const [totalItems, setTotalItems] = useState(0);
+
+  const handleUpdateTotalItems = (newTotalItems) => {
+    setTotalItems(newTotalItems);
+  };
+
   return (
     <Container>
-      <Header />
+      <Header isAdmin={'False'} totalItems={totalItems}/>
       <Content>
         <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
-      <SliderCards cardTitle={"Sobremesas"}/>
-      <SliderCards cardTitle={"Sobremesas"}/>
-      <SliderCards cardTitle={"Sobremesas"}/>
+      <SliderCards cardTitle={"Sobremesas"} onUpdateTotalItems={handleUpdateTotalItems}/>
+      <SliderCards cardTitle={"Sobremesas"} onUpdateTotalItems={handleUpdateTotalItems}/>
+      <SliderCards cardTitle={"Sobremesas"} onUpdateTotalItems={handleUpdateTotalItems}/>
       </Content>
       <Footer />
     </Container>

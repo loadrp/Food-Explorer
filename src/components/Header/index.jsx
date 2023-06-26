@@ -1,4 +1,4 @@
-import { Container, Profile, Logout } from "./styles";
+import { Container, Profile, Logout, Counter } from "./styles";
 import { useAuth } from "../../hooks/auth";
 import { useState } from 'react'
 import { api } from "../../services/api";
@@ -9,7 +9,7 @@ import { FiMenu, FiSearch, FiLogOut, FiShoppingBag, FiShoppingCart } from "react
 import Logo from '../../assets/logo.svg';
 import { DisplayMenu } from "../DisplayMenu";
 
-export function Header(isAdmin) {
+export function Header({isAdmin, totalItems }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { signOut, user } = useAuth();
 
@@ -29,7 +29,7 @@ export function Header(isAdmin) {
         <div style={{ display: "flex", gap: "5px", whiteSpace: "nowrap" }}>
           <img src={Logo} width={30} height={30} alt='logo' />
           <h2>Food Explorer</h2>
-          {isAdmin? <p style={{display: "flex",justifyContent:"center", alignItems: "center"}}>admin</p> : <p></p>}
+          {isAdmin == 'True' ? <p style={{display: "flex",justifyContent:"center", alignItems: "center"}}>admin</p> : <p></p>}
         </div>
 
         <div>
@@ -43,7 +43,7 @@ export function Header(isAdmin) {
         <Input placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
       </div>
 
-      <Button icon={FiShoppingBag} title={'Pedidos'} />
+      <Button icon={FiShoppingBag} title={'Pedidos' + totalItems }  />
       <Logout onClick={signOut}>
         <FiLogOut />
       </Logout>

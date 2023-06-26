@@ -85,7 +85,7 @@ export function AdminEditFood() {
 
   return (
     <Container>
-      <Header isAdmin/>
+      <Header isAdmin={'True'}/>
 
       <main>
         <Form>

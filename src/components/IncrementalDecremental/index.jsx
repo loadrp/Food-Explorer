@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Wrapper, ButtonCard, Value } from './style'
 
-const IncrementDecrement = ({ value, onIncrement, onDecrement }) => {
+const IncrementDecrement = ({ onIncrement, onDecrement }) => {
   const [count, setCount] = useState(0);
 
   const decrementCount = () => {

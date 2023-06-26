@@ -18,6 +18,10 @@ export function AdminDetails() {
   function handleBack(){
     navigate("/");
   }
+
+  function handleEdit(){
+    navigate("/editfood");
+  }
   
   async function handleRemove(){
     const confirm =window.confirm("Deseja realmente remover esta nota?")
@@ -37,7 +41,7 @@ export function AdminDetails() {
 
   return (
     <Container>
-      <Header isAdmin />
+      <Header isAdmin={'True'} />
       {
        /* data &&*/
             
@@ -61,7 +65,7 @@ export function AdminDetails() {
               </div>
               <DetailsWrapper>
         
-              <Button title="Editar Prato" onClick={handleBack}>
+              <Button title="Editar Prato" onClick={handleEdit}>
               </Button>
               </DetailsWrapper>
               
