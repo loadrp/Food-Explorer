@@ -2,7 +2,6 @@ import { Header } from '../../components/Header'
 import { Container, Form, Wrapper } from './styles'
 import { Input } from '../../components/Input'
 import { Textarea } from '../../components/Textarea'
-import { NoteItem } from '../../components/NoteItem'
 import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
@@ -11,6 +10,7 @@ import { api } from '../../services/api'
 import { useNavigate } from 'react-router-dom'
 import { BsChevronDown, BsChevronLeft, BsUpload } from 'react-icons/bs'
 import { Footer } from '../../components/Footer'
+import { FoodTag } from '../../components/FoodTag'
 
 
 
@@ -145,7 +145,7 @@ export function AdminNewFood() {
 
                 {
                   links.map((link, index) => (
-                    <NoteItem
+                    <FoodTag
                       key={String(index)}
                       value={link}
                       onClick={() => handleRemoveLink(link)}
@@ -154,7 +154,7 @@ export function AdminNewFood() {
                   ))
                 }
 
-                <NoteItem
+                <FoodTag
                   isNew
                   placeholder="Adicionar Tag"
                   value={newLink}

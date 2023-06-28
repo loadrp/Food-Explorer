@@ -9,7 +9,7 @@ import { FiMenu, FiSearch, FiLogOut, FiShoppingBag, FiShoppingCart } from "react
 import Logo from '../../assets/logo.svg';
 import { DisplayMenu } from "../DisplayMenu";
 
-export function Header({isAdmin, totalItems }) {
+export function Header({isAdmin}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { signOut, user } = useAuth();
 
@@ -43,7 +43,7 @@ export function Header({isAdmin, totalItems }) {
         <Input placeholder="Busque por pratos ou ingredientes" icon={FiSearch} />
       </div>
 
-      <Button icon={FiShoppingBag} title={'Pedidos' + totalItems }  />
+      <Button icon={FiShoppingBag} title={'Pedidos'}  />
       <Logout onClick={signOut}>
         <FiLogOut />
       </Logout>

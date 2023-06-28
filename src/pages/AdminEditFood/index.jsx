@@ -2,7 +2,7 @@ import { Header } from '../../components/Header'
 import { Container, Form, Wrapper } from './styles'
 import { Input } from '../../components/Input'
 import { Textarea } from '../../components/Textarea'
-import { NoteItem } from '../../components/NoteItem'
+import { FoodTag } from '../../components/FoodTag'
 import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
@@ -15,12 +15,10 @@ import { Footer } from '../../components/Footer'
 
 
 export function AdminEditFood() {
-  const [title, setTitle] = useState("");
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-
-  const [links, setLinks] = useState([]);
-  const [newLink, setNewLink] = useState("");
-
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
   const [tags, setTag] = useState([]);
   const [newTag, setNewTag] = useState("");
 
@@ -31,19 +29,6 @@ export function AdminEditFood() {
     setNewTag("")
   }
 
-  function handleAddLink() {
-    setLinks(prevState => [...prevState, newLink])
-    setNewLink("");
-  }
-
-  function handleKeyPress(e) {
-    if (e.key === "Enter") {
-      setLinks(prevState => [...prevState, newLink])
-      setNewLink("");
-
-    }
-  }
-
   function handleKeyPressTag(e) {
     if (e.key === "Enter") {
       setTag(prevState => [...prevState, newTag]);
@@ -51,33 +36,33 @@ export function AdminEditFood() {
     }
   }
 
-  function handleRemoveLink(deleted) {
-    setLinks(prevState => prevState.filter(link => link !== deleted))
-  }
-
   function handleRemoveTag(deleted) {
     setTag(prevState => prevState.filter(tag => tag !== deleted))
   }
 
   async function handleNewNote() {
-    if (!title) {
-      return alert("Digite o título da nota a ser cadastrada")
+    if (!name) {
+      return alert("Digite o o nome da comida a ser cadastrada")
     }
     if (!description) {
-      return alert("Digite o título da nota a ser cadastrada")
+      return alert("Digite a descrição da comida a ser cadastrada")
     }
-    if (newLink) {
-      return alert("Você deixou um Link sem adicionar")
+    if (!price) {
+      return alert("Você deixou a comida sem preço definido")
+    }
+    if (!category) {
+      return alert("Você deixou a categoria da comida em branco")
     }
     if (newTag) {
       return alert("Você deixou alguma tag sem adicionar")
     }
 
-    await api.post("/notes", {
-      title,
+    await api.post("/foods", {
+      name,
       description,
-      tags,
-      links
+      price,
+      category_name : category,
+      tags
     })
     alert("Nota cadastrada com sucesso!");
     navigate("/");
@@ -110,7 +95,7 @@ export function AdminEditFood() {
               <p>Nome</p>
               <Input
                 placeholder="Ex: Salada Ceasar"
-                onChange={e => setTitle(e.target.value)}
+                onChange={e => setName(e.target.value)}
               />
             </Wrapper>
 
@@ -126,11 +111,12 @@ export function AdminEditFood() {
 
                   </label>
                 </div>
-                <select id="category" >
+                <select onChange={e=> setCategory(e.target.value)} id="category" >
                   <option value="0" selected disabled>Selecione a categoria do prato</option>
-                  <option value="1">Teste1
-
-                  </option>
+                  <option value="1">Comida Italiana</option>
+                  <option value="2">Comida Mexicana</option>
+                  <option value="3">Comida Japonesa</option>
+                  <option value="4">Sobremesas</option>
 
                 </select>
               </label>
@@ -144,23 +130,23 @@ export function AdminEditFood() {
               <div className='ingredient-tag'>
 
                 {
-                  links.map((link, index) => (
-                    <NoteItem
+                  tags.map((tag, index) => (
+                    <FoodTag
                       key={String(index)}
-                      value={link}
-                      onClick={() => handleRemoveLink(link)}
+                      value={tag}
+                      onClick={() => handleRemoveTag(tag)}
 
                     />
                   ))
                 }
 
-                <NoteItem
+                <FoodTag
                   isNew
                   placeholder="Adicionar Tag"
-                  value={newLink}
-                  onChange={e => setNewLink(e.target.value)}
-                  onClick={handleAddLink}
-                  onKeyPress={handleKeyPress}
+                  value={newTag}
+                  onChange={e => setNewTag(e.target.value)}
+                  onClick={handleAddTag}
+                  onKeyPress={handleKeyPressTag}
                 />
 
               </div>
@@ -168,14 +154,17 @@ export function AdminEditFood() {
 
             <Wrapper>
               <p>Preço</p>
-              <Input price={"R$"} placeholder={"Preço"}></Input>
+              <Input
+              onChange={e => setPrice(e.target.value)}
+              priceTag={"R$"} 
+              placeholder={"Preço"}></Input>
             </Wrapper>
           </div>
 
           <Wrapper>
             <p>Descrição</p>
             <Textarea
-              placeholder="Observações"
+              placeholder="Descrição da Comida"
               onChange={e => setDescription(e.target.value)}
             />
           </Wrapper>

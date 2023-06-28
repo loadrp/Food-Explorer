@@ -10,13 +10,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin, onUpdateTotalItems }) {
+export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin }) {
 
   const [counterOrders, setcounterOrders] = useState(0);
 
   function handleOrders(){
     setcounterOrders(counterOrders + 1);
-    onUpdateTotalItems(counterOrders + 1);
   }
 
   const [isFavorite, setIsFavorite] = useState(true);
@@ -71,7 +70,7 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin, o
       
       <Wrapper>
         {isAdmin ? <button title={"Editar"} onClick={handleEdit}>Editar</button>
-          : [<IncrementDecrement />, <button onClick={handleOrders(value)}>Incluir</button>]}
+          : [<IncrementDecrement />, <button onClick={handleOrders}>Incluir</button>]}
 
 
       </Wrapper>

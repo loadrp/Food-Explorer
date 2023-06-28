@@ -58,20 +58,16 @@ export function Home({ }) {
 
   }, [tagsSelected, search])
 
-  const [totalItems, setTotalItems] = useState(0);
 
-  const handleUpdateTotalItems = (newTotalItems) => {
-    setTotalItems(newTotalItems);
-  };
 
   return (
     <Container>
-      <Header isAdmin={'False'} totalItems={totalItems}/>
+      <Header isAdmin={'False'}/>
       <Content>
         <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
-      <SliderCards cardTitle={"Sobremesas"} onUpdateTotalItems={handleUpdateTotalItems}/>
-      <SliderCards cardTitle={"Sobremesas"} onUpdateTotalItems={handleUpdateTotalItems}/>
-      <SliderCards cardTitle={"Sobremesas"} onUpdateTotalItems={handleUpdateTotalItems}/>
+      <SliderCards cardTitle={"Sobremesas"} />
+      <SliderCards cardTitle={"Sobremesas"} />
+      <SliderCards cardTitle={"Sobremesas"} />
       </Content>
       <Footer />
     </Container>
