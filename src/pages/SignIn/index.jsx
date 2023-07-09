@@ -2,25 +2,35 @@ import { Container, Form} from "./styles";
 import { Input } from "../../components/Input";
 import { Button } from '../../components/Button'
 import { FiLock, FiMail } from "react-icons/fi";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
+
 import Logo from '../../assets/logo.svg'
 
 export function SignIn(){
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  const navigate = useNavigate()
   
   const {signIn} = useAuth();
 
-  function handleSignIn(){
-    signIn({email, password});
+  async function handleSignIn(){
+    await signIn({email, password});
+    const storedUser = JSON.parse(localStorage.getItem("@foodexplorer:user"));
+    if ( storedUser.role === "admin") {
+      navigate("/admin");
+    } else {
+      navigate("/");
+    }
+    
   }
   
   return(
     <Container>
       <img src={Logo} alt="" />
-      <h1>Food Explorer</h1>
+      <h1>food explorer</h1>
       <Form>
         <div>
         <h2>Faça login</h2>

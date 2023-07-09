@@ -1,5 +1,5 @@
 import {createContext, useContext, useState, useEffect} from 'react'
-import { useRoutes } from 'react-router-dom';
+import { useNavigate, useRoutes } from 'react-router-dom';
 import { api } from '../services/api';
 
 
@@ -20,12 +20,14 @@ function AuthProvider({children}){
       if (user && token) {
         localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
         localStorage.setItem("@foodexplorer:token", token );
-        
-  
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
         setData({ user, token, role})
+
       } else {
+
         throw new Error('Usuário ou token não fornecidos pela API');
+
       }
     }
     catch(error){
@@ -40,8 +42,9 @@ function AuthProvider({children}){
   function signOut(){
     localStorage.removeItem("@foodexplorer:user")
     localStorage.removeItem("@foodexplorer:token")
- 
+    
     setData({});
+    
   }
 
   async function updateProfile({user, avatarFile}){

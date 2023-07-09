@@ -11,15 +11,12 @@ import {
 } from "./style";
 
 
-export function SliderCards ({ cardTitle, isAdmin }) {
-  const foods = [
-    { title: "Food 1", description: "Description 1", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
-    { title: "Food 2", description: "Description 2", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
-    { title: "Food 3", description: "Description 3", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
-    { title: "Food 4", description: "Description 4", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
-    { title: "Food 5", description: "Description 5", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1" },
-    { title: "Food 6", description: "Description 6", price: "R$ 9.99", imgSrc:"src/assets/prato1.png", imgAlt: "Prato1"},
-  ];
+export function SliderCards ({ cardTitle, isAdmin, category, foods}) {
+
+ 
+
+ 
+
 
   const [firstDisplayed, setFirstDisplayed] = useState(0);
 
@@ -38,6 +35,7 @@ export function SliderCards ({ cardTitle, isAdmin }) {
   return (
     <>
       <Title>
+        {console.log(cardTitle)}
         <h2>{cardTitle}</h2>
       </Title>
 
@@ -50,7 +48,7 @@ export function SliderCards ({ cardTitle, isAdmin }) {
             <FoodCardWrapper key={index}>
               <FoodCard
                
-                title={food.title}
+                title={food.name}
                 description={food.description}
                 price={food.price}
                 imgAlt={food.imgAlt}

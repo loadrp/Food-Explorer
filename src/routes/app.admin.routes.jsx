@@ -8,7 +8,7 @@ import { AdminEditFood } from '../pages/AdminEditFood'
 export function AdminRoutes(){
   return(
     <Routes>
-      <Route path='/' element={<AdminHome/>}/>
+      <Route path='/admin' element={<AdminHome/>} />
       <Route path='/admindetails' element={<AdminDetails/>}/>
       <Route path='/newfood' element={<AdminNewFood/>}/>
       <Route path='/editfood' element={<AdminEditFood/>}/>

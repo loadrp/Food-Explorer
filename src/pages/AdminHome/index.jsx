@@ -13,8 +13,8 @@ import { SliderCards } from '../../components/SliderCards'
 export function AdminHome({ }) {
   const [tags, setTags] = useState("");
   const [tagsSelected, setTagsSelected] = useState([]);
-  const [notes, setNotes] = useState([]);
-  const [search, setSearch] = useState("");
+  const [foods, setFoods] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const navigate = useNavigate();
 
@@ -38,7 +38,10 @@ export function AdminHome({ }) {
 
   }
 
+
+
   useEffect(() => {
+
     async function fetchTags() {
       const response = await api.get("/tags")
       setTags(response.data);
@@ -47,23 +50,38 @@ export function AdminHome({ }) {
   }, []);
 
   useEffect(() => {
-    async function fetchNotes() {
-      const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`)
-      setNotes(response.data);
-
+    async function fetchFoods() {
+      const response = await api.get(`/foods?title&tags&category`);
+      setFoods(response.data);
     }
-    fetchNotes()
+    fetchFoods();
+  }, [tagsSelected, searchTerm]);
 
-  }, [tagsSelected, search])
+  const uniqueCategories = [...new Set(foods.map((food) => food.category_name))];
+
 
   return (
     <Container>
-      <Header isAdmin={'True'}/>
+      <Header isAdmin={'True'} />
       <Content>
+
         <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
-      <SliderCards cardTitle={"Sobremesas"} isAdmin/>
-      <SliderCards cardTitle={"Sobremesas"} isAdmin/>
-      <SliderCards cardTitle={"Sobremesas"} isAdmin/>
+        {uniqueCategories.map((category) => {
+          const categoryFoods = foods.filter((food) => food.category_name === category);
+          if (categoryFoods.length > 0) {
+            return (
+              <SliderCards
+                key={category}
+                cardTitle={category}
+                foods={categoryFoods}
+                isAdmin
+              />
+            );
+          }
+          return null;
+        })}
+
+
       </Content>
       <Footer />
     </Container>

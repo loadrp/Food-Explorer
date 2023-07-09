@@ -16,7 +16,7 @@ export function AdminDetails() {
   const navigate = useNavigate();
 
   function handleBack(){
-    navigate("/");
+    navigate("/admin");
   }
 
   function handleEdit(){

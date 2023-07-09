@@ -7,6 +7,20 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
+  >h1{
+    font-size: 48rem;
+    color: ${({theme})=> theme.COLORS.WHITE};
+    font-weight: bold;
+    
+    
+    @media (max-width:768px) {
+      font-size: 36rem;
+      font-weight: bold;
+      
+    }
+
+  }
+
   @media (max-width:768px) {
       font-size: 15rem;
       margin: 0 auto;
@@ -20,19 +34,7 @@ export const Container = styled.div`
 
 
 
-  >h1{
-    font-size: 48rem;
-    color: ${({theme})=> theme.COLORS.WHITE};
-    font-weight: bold;
-    font-family: 'Roboto';
-    
-    @media (max-width:768px) {
-      font-size: 36rem;
-      font-weight: bold;
-      font-family: 'Roboto';
-    }
-
-  }
+  
 
   >img{
     margin: 19rem;

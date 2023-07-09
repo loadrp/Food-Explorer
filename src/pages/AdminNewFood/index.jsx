@@ -15,12 +15,11 @@ import { FoodTag } from '../../components/FoodTag'
 
 
 export function AdminNewFood() {
-  const [title, setTitle] = useState("");
+  const [image, setImage] = useState(null);
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-
-  const [links, setLinks] = useState([]);
-  const [newLink, setNewLink] = useState("");
-
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
   const [tags, setTag] = useState([]);
   const [newTag, setNewTag] = useState("");
 
@@ -31,19 +30,6 @@ export function AdminNewFood() {
     setNewTag("")
   }
 
-  function handleAddLink() {
-    setLinks(prevState => [...prevState, newLink])
-    setNewLink("");
-  }
-
-  function handleKeyPress(e) {
-    if (e.key === "Enter") {
-      setLinks(prevState => [...prevState, newLink])
-      setNewLink("");
-
-    }
-  }
-
   function handleKeyPressTag(e) {
     if (e.key === "Enter") {
       setTag(prevState => [...prevState, newTag]);
@@ -51,41 +37,56 @@ export function AdminNewFood() {
     }
   }
 
-  function handleRemoveLink(deleted) {
-    setLinks(prevState => prevState.filter(link => link !== deleted))
-  }
-
   function handleRemoveTag(deleted) {
     setTag(prevState => prevState.filter(tag => tag !== deleted))
   }
 
-  async function handleNewNote() {
-    if (!title) {
-      return alert("Digite o título da nota a ser cadastrada")
+  async function handleNewFood() {
+    if (!name) {
+      return alert("Digite o o nome da comida a ser cadastrada")
     }
     if (!description) {
-      return alert("Digite o título da nota a ser cadastrada")
+      return alert("Digite a descrição da comida a ser cadastrada")
     }
-    if (newLink) {
-      return alert("Você deixou um Link sem adicionar")
+    if (!price) {
+      return alert("Você deixou a comida sem preço definido")
+    }
+    if (!category) {
+      return alert("Você deixou a categoria da comida em branco")
     }
     if (newTag) {
       return alert("Você deixou alguma tag sem adicionar")
     }
 
-    await api.post("/notes", {
-      title,
-      description,
-      tags,
-      links
-    })
-    alert("Nota cadastrada com sucesso!");
-    navigate("/");
+    try {
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category_name", category);
+      formData.append("tags", JSON.stringify(tags));
+      formData.append("image", image);
+
+      console.log(formData)
+      for (let pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
+  
+      await api.post("/foods", formData);
+  
+      alert("Comida cadastrada com sucesso!");
+      navigate("/admin");
+    } catch (error) {
+      console.error(error);
+      alert("Ocorreu um erro ao cadastrar a comida.");
+    }
   }
+
+  
 
   return (
     <Container>
-      <Header isAdmin={'True'}/>
+      <Header isAdmin={'True'} />
 
       <main>
         <Form>
@@ -102,15 +103,21 @@ export function AdminNewFood() {
                 <label htmlFor="img-prato">
                   <BsUpload size={18} />
                   <p>Selecione a imagem</p>
-                  <input type="file" id="img-prato"></input>
+                  <input
+                    type="file"
+                    name="image"
+                    id="img-prato"
+                    onChange={(e) => setImage(e.target.files[0])}
+                    />
                 </label>
+                    {console.log(image)}
               </div>
             </Wrapper>
             <Wrapper>
               <p>Nome</p>
               <Input
                 placeholder="Ex: Salada Ceasar"
-                onChange={e => setTitle(e.target.value)}
+                onChange={e => setName(e.target.value)}
               />
             </Wrapper>
 
@@ -126,11 +133,12 @@ export function AdminNewFood() {
 
                   </label>
                 </div>
-                <select id="category" >
+                <select onChange={e => setCategory(e.target.value)} id="category" >
                   <option value="0" selected disabled>Selecione a categoria do prato</option>
-                  <option value="1">Teste1
-
-                  </option>
+                  <option value="1">Comida Italiana</option>
+                  <option value="2">Comida Mexicana</option>
+                  <option value="3">Comida Japonesa</option>
+                  <option value="4">Sobremesas</option>
 
                 </select>
               </label>
@@ -144,11 +152,11 @@ export function AdminNewFood() {
               <div className='ingredient-tag'>
 
                 {
-                  links.map((link, index) => (
+                  tags.map((tag, index) => (
                     <FoodTag
                       key={String(index)}
-                      value={link}
-                      onClick={() => handleRemoveLink(link)}
+                      value={tag}
+                      onClick={() => handleRemoveTag(tag)}
 
                     />
                   ))
@@ -157,10 +165,10 @@ export function AdminNewFood() {
                 <FoodTag
                   isNew
                   placeholder="Adicionar Tag"
-                  value={newLink}
-                  onChange={e => setNewLink(e.target.value)}
-                  onClick={handleAddLink}
-                  onKeyPress={handleKeyPress}
+                  value={newTag}
+                  onChange={e => setNewTag(e.target.value)}
+                  onClick={handleAddTag}
+                  onKeyPress={handleKeyPressTag}
                 />
 
               </div>
@@ -168,7 +176,10 @@ export function AdminNewFood() {
 
             <Wrapper>
               <p>Preço</p>
-              <Input price={"R$"} placeholder={"Preço"}></Input>
+              <Input
+                onChange={e => setPrice(e.target.value)}
+                price={"R$"}
+                placeholder={"Preço"}></Input>
             </Wrapper>
           </div>
 
@@ -184,7 +195,7 @@ export function AdminNewFood() {
 
             <Button
               title="Salvar Alterações"
-              onClick={handleNewNote} />
+              onClick={handleNewFood} />
 
 
           </div>

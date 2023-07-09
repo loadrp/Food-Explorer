@@ -64,8 +64,8 @@ export function AdminEditFood() {
       category_name : category,
       tags
     })
-    alert("Nota cadastrada com sucesso!");
-    navigate("/");
+    alert("Comida cadastrada com sucesso!");
+    navigate("/admin");
   }
 
   return (
@@ -77,7 +77,7 @@ export function AdminEditFood() {
           <header>
             <h1>Editar Prato</h1>
 
-            <Link to="/">
+            <Link to="/admin">
               <BsChevronLeft size={15} /> Voltar</Link>
           </header>
           <div className='first-container'>
