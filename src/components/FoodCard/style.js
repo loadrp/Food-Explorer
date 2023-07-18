@@ -41,6 +41,10 @@ export const Container = styled.div`
     text-decoration: none;
     color: none;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     @media(max-width: 768px){
     font-size: 11px;
 
@@ -64,8 +68,11 @@ export const Container = styled.div`
   }
 
   
-  > a> img{
+  > a >img{
     width: 176rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
     @media(max-width: 768px){
       width: 88rem;
@@ -75,7 +82,7 @@ export const Container = styled.div`
 
   }
 
-  >a> h2{
+  >a >h2{
     margin-bottom: 15rem;
     font-family: 'Poppins';
     font-size: 24px;
@@ -93,7 +100,7 @@ export const Container = styled.div`
     }
 
   }
-  >a> .description{
+  >a >.description{
     margin-bottom: 15rem;
     font-family: 'Roboto';
     font-size: 14px;
@@ -101,9 +108,10 @@ export const Container = styled.div`
     line-height: 22px;
     letter-spacing: 0em;
     text-align: center;
+    color: #C4C4CC;
     
     @media(max-width: 768px){
-     display: none;
+     
 
     }
   }

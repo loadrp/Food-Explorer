@@ -13,11 +13,6 @@ import {
 
 export function SliderCards ({ cardTitle, isAdmin, category, foods}) {
 
- 
-
- 
-
-
   const [firstDisplayed, setFirstDisplayed] = useState(0);
 
   const displayNext = () => {
@@ -35,25 +30,27 @@ export function SliderCards ({ cardTitle, isAdmin, category, foods}) {
   return (
     <>
       <Title>
-        {console.log(cardTitle)}
-        <h2>{cardTitle}</h2>
+        <h2>{foods?  cardTitle : null}</h2>
       </Title>
-
+      {foods?
       <SliderContainer>
+        
         <PrevButton onClick={displayPrev}>
           <BsChevronLeft size={25} />
         </PrevButton>
         <Slider>
-          {foods.slice(firstDisplayed, firstDisplayed + 5).map((food, index) => (
+          {foods?.slice(firstDisplayed, firstDisplayed + 5).map((food, index) => (
             <FoodCardWrapper key={index}>
+              
               <FoodCard
                
                 title={food.name}
                 description={food.description}
                 price={food.price}
-                imgAlt={food.imgAlt}
-                imgSrc={food.imgSrc}
+                imgAlt={food.name}
+                imgSrc={food.image}
                 isAdmin={isAdmin}
+                
               />
             </FoodCardWrapper>
           ))}
@@ -62,6 +59,7 @@ export function SliderCards ({ cardTitle, isAdmin, category, foods}) {
           <BsChevronRight size={25} />
         </NextButton>
       </SliderContainer>
+      : null}
     </>
   );
 }

@@ -53,6 +53,8 @@ export function AdminHome({ }) {
     async function fetchFoods() {
       const response = await api.get(`/foods?title&tags&category`);
       setFoods(response.data);
+      console.log(response.data)
+      
     }
     fetchFoods();
   }, [tagsSelected, searchTerm]);
@@ -65,10 +67,12 @@ export function AdminHome({ }) {
       <Header isAdmin={'True'} />
       <Content>
 
-        <HeroSection title={"Sabores inigualáveis"} description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
+        <HeroSection title={"Sabores inigualáveis"} 
+        description={"Sinta o cuidado do preparo com ingredientes selecionados"} />
         {uniqueCategories.map((category) => {
           const categoryFoods = foods.filter((food) => food.category_name === category);
           if (categoryFoods.length > 0) {
+            
             return (
               <SliderCards
                 key={category}

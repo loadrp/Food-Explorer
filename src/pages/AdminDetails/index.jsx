@@ -24,16 +24,16 @@ export function AdminDetails() {
   }
   
   async function handleRemove(){
-    const confirm =window.confirm("Deseja realmente remover esta nota?")
+    const confirm = window.confirm("Deseja realmente remover esta comida?")
     if(confirm){
-      await api.delete(`/notes/${params.id}`);
+      await api.delete(`/foods/${params.id}`);
       navigate("/")
     }
   }
 
   useEffect(() => {
     async function fetchNoteDetails() {
-      const response = await api.get(`/notes/${params.id}`)
+      const response = await api.get(`/foods/${params.id}`)
       setData(response.data)
     }
     fetchNoteDetails()

@@ -62,15 +62,15 @@ export function AdminNewFood() {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("description", description);
-      formData.append("price", price);
+      formData.append("price", "R$ " + price);
       formData.append("category_name", category);
       formData.append("tags", JSON.stringify(tags));
       formData.append("image", image);
 
-      console.log(formData)
+      /*console.log(formData)
       for (let pair of formData.entries()) {
         console.log(pair[0], pair[1]);
-      }
+      }*/
   
       await api.post("/foods", formData);
   
@@ -135,10 +135,10 @@ export function AdminNewFood() {
                 </div>
                 <select onChange={e => setCategory(e.target.value)} id="category" >
                   <option value="0" selected disabled>Selecione a categoria do prato</option>
-                  <option value="1">Comida Italiana</option>
-                  <option value="2">Comida Mexicana</option>
-                  <option value="3">Comida Japonesa</option>
-                  <option value="4">Sobremesas</option>
+                  <option value="Comida Italiana">Comida Italiana</option>
+                  <option value="Comida Mexicana">Comida Mexicana</option>
+                  <option value="Comida Japonesa">Comida Japonesa</option>
+                  <option value="Sobremesas">Sobremesas</option>
 
                 </select>
               </label>
