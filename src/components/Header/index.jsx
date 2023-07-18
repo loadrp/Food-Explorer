@@ -11,24 +11,23 @@ import { DisplayMenu } from "../DisplayMenu";
 import { Link, useNavigate } from "react-router-dom";
 
 
-export function Header({isAdmin}) {
+export function Header({ isAdmin, setSearchTerm }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
 
-  async function handleSearch() {
-    const response = await fetch(`/api/foods?search=${searchTerm}`);
-    const data = await response.json();
-    // Update the state with the search results
-    setFoods(data);
+
+  async function handleSearch(e) {
+    console.log(e.target.value)
+    setSearchTerm(e.target.value);
+
   }
-  
+
   const navigate = useNavigate();
   const { signOut, user } = useAuth();
 
-  
-   function signOutClick() {
+
+  function signOutClick() {
     const storedUser = JSON.parse(localStorage.getItem("@foodexplorer:user"));
-    if ( storedUser.role == "admin") {
+    if (storedUser.role == "admin") {
       navigate("/");
       signOut();
     } else {
@@ -36,25 +35,19 @@ export function Header({isAdmin}) {
       signOut();
     }
   }
-  
-
-  const avatarUrl = user.avatar
-    ? `${api.defaults.baseURL}/files/${user.avatar}`
-    : avatarPlaceHolder;
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <Container>
-      <DisplayMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} isAdmin={isAdmin}/>
+      <DisplayMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} isAdmin={isAdmin} />
       <div className="logo">
         <FiMenu onClick={toggleMenu} />
         <div style={{ display: "flex", gap: "5px", whiteSpace: "nowrap" }}>
           <img src={Logo} width={30} height={30} alt='logo' />
           <h2>Food Explorer</h2>
-          {isAdmin == 'True' ? <p style={{display: "flex",justifyContent:"center", alignItems: "center"}}>admin</p> : <p></p>}
+          {isAdmin == 'True' ? <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>admin</p> : <p></p>}
         </div>
 
         <div>
@@ -63,17 +56,18 @@ export function Header({isAdmin}) {
         </div>
       </div>
 
-      <Profile to="/profile"></Profile>
+
       <div className="input-style">
-        <Input placeholder="Busque por pratos ou ingredientes" icon={FiSearch} onChange={setSearchTerm} />
+        <Input placeholder="Busque por pratos ou ingredientes" icon={FiSearch}
+          onChange={handleSearch} />
       </div>
-      
+
       <Link to={isAdmin === 'True' ? '/newfood' : '/'}>
-  <Button
-    icon={isAdmin === 'True' ? null : FiShoppingBag}
-    title={isAdmin === 'True' ? 'Novo Prato' : 'Pedidos (0)'}
-  />
-</Link>
+        <Button
+          icon={isAdmin === 'True' ? null : FiShoppingBag}
+          title={isAdmin === 'True' ? 'Novo Prato' : 'Pedidos (0)'}
+        />
+      </Link>
       <Logout onClick={() => signOutClick()}>
         <FiLogOut />
       </Logout>

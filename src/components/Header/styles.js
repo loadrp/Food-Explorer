@@ -96,6 +96,9 @@ export const Container = styled.header`
     display: none;
   }
 
+  >a>button{
+    display: none;
+  }
   >button{
     display: none;
   }
@@ -117,6 +120,7 @@ export const Container = styled.header`
   
 
 `;
+
 
 export const Profile = styled(Link)`
   display: flex;

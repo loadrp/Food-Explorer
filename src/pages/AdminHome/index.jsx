@@ -2,7 +2,7 @@ import { FiPlus, FiSearch } from 'react-icons/fi'
 import { Container, Brand, Menu, Search, Content, NewNote, Cards } from './styles'
 import { Header } from '../../components/Header'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { api } from '../../services/api'
 import { HeroSection } from '../../components/Hero Section'
 import { Footer } from '../../components/Footer'
@@ -15,8 +15,27 @@ export function AdminHome({ }) {
   const [tagsSelected, setTagsSelected] = useState([]);
   const [foods, setFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500); // debounce de 500ms
+  
+  
 
   const navigate = useNavigate();
+
+  function useDebounce(value, delay) {
+    const [debouncedValue, setDebouncedValue] = useState(value);
+  
+    useEffect(() => {
+      const handler = setTimeout(() => {
+        setDebouncedValue(value);
+      }, delay);
+  
+      return () => {
+        clearTimeout(handler);
+      };
+    }, [value, delay]);
+  
+    return debouncedValue;
+  }
 
   function handleTagSelected(tagName) {
     if (tagName === "all") {
@@ -37,6 +56,26 @@ export function AdminHome({ }) {
     navigate(`/details/${id}`)
 
   }
+  useEffect(() => {
+    async function fetchFoods() {
+      const response = await api.get("/foods?title&tags&category");
+      setFoods(response.data);
+    }
+    fetchFoods();
+  }, []);
+  
+  useEffect(() => {
+    async function fetchFoods() {
+      if (debouncedSearchTerm !== "") {
+        const response = await api.get(`/foods/search?searchQuery=${debouncedSearchTerm}`);
+        setFoods(response.data);
+      } else {
+        const response = await api.get("/foods?title&tags&category");
+        setFoods(response.data);
+      }
+    }
+    fetchFoods();
+  }, [debouncedSearchTerm]);
 
 
 
@@ -49,22 +88,12 @@ export function AdminHome({ }) {
     fetchTags();
   }, []);
 
-  useEffect(() => {
-    async function fetchFoods() {
-      const response = await api.get(`/foods?title&tags&category`);
-      setFoods(response.data);
-      console.log(response.data)
-      
-    }
-    fetchFoods();
-  }, [tagsSelected, searchTerm]);
-
   const uniqueCategories = [...new Set(foods.map((food) => food.category_name))];
 
 
   return (
     <Container>
-      <Header isAdmin={'True'} />
+      <Header isAdmin={'True'} setSearchTerm={setSearchTerm} />
       <Content>
 
         <HeroSection title={"Sabores inigualáveis"} 

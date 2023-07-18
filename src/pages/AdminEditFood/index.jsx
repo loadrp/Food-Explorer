@@ -24,6 +24,14 @@ export function AdminEditFood() {
 
   const navigate = useNavigate();
 
+  async function handleRemove() {
+    const confirm = window.confirm("Deseja realmente remover esta comida?")
+    if (confirm) {
+      response = await api.delete(`/foods/${params.id}`);
+      navigate("/")
+    }
+  }
+
   function handleAddTag() {
     setTag(prevState => [...prevState, newTag]);
     setNewTag("")
@@ -61,7 +69,7 @@ export function AdminEditFood() {
       name,
       description,
       price,
-      category_name : category,
+      category_name: category,
       tags
     })
     alert("Comida cadastrada com sucesso!");
@@ -70,7 +78,7 @@ export function AdminEditFood() {
 
   return (
     <Container>
-      <Header isAdmin={'True'}/>
+      <Header isAdmin={'True'} />
 
       <main>
         <Form>
@@ -111,7 +119,7 @@ export function AdminEditFood() {
 
                   </label>
                 </div>
-                <select onChange={e=> setCategory(e.target.value)} id="category" >
+                <select onChange={e => setCategory(e.target.value)} id="category" >
                   <option value="0" selected disabled>Selecione a categoria do prato</option>
                   <option value="Comida Italiana">Comida Italiana</option>
                   <option value="Comida Mexicana">Comida Mexicana</option>
@@ -155,9 +163,9 @@ export function AdminEditFood() {
             <Wrapper>
               <p>Preço</p>
               <Input
-              onChange={e => setPrice(e.target.value)}
-              priceTag={"R$"} 
-              placeholder={"Preço"}></Input>
+                onChange={e => setPrice(e.target.value)}
+                priceTag={"R$"}
+                placeholder={"Preço"}></Input>
             </Wrapper>
           </div>
 
@@ -169,11 +177,11 @@ export function AdminEditFood() {
             />
           </Wrapper>
 
-          <div style={{display: "flex", gap:"20rem"}}>
+          <div style={{ display: "flex", gap: "20rem" }}>
             <Button
               title="Excluir Prato"
               bgColor={"#333333"}
-              onClick={handleNewNote} />
+              onClick={handleRemove} />
 
             <Button
               title="Salvar Alterações"
