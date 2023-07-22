@@ -14,7 +14,7 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
 
   const [counterOrders, setcounterOrders] = useState(0);
 
-  function handleOrders(){
+  function handleOrders() {
     setcounterOrders(counterOrders + 1);
   }
 
@@ -25,10 +25,10 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
     setIsFavorite(!isFavorite);
   };
 
-  function handleEdit(){
-    
+  function handleEdit() {
+
     navigate("/admindetails");
-  
+
   }
 
 
@@ -50,6 +50,7 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
           )
         )}
       </i>
+      
       {isAdmin ? (
         <Link to="/admindetails">
           <img src={imgSrc} alt={imgAlt} />
@@ -59,20 +60,18 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
           <p className="price">{price}</p>
         </Link>
       ) :
-      <a href="/details">
-        <img src={imgSrc} alt={imgAlt} />
+        <a href="/details">
+          <img src={imgSrc} alt={imgAlt} />
 
-        <h2>{title}</h2>
-        <p className="description">{description}</p>
-        <p className="price">{price}</p>
-      </a>
+          <h2>{title}</h2>
+          <p className="description">{description}</p>
+          <p className="price">{price}</p>
+        </a>
       }
-      
+
       <Wrapper>
         {isAdmin ? <button title={"Editar"} onClick={handleEdit}>Editar</button>
           : [<IncrementDecrement />, <button onClick={handleOrders}>Incluir</button>]}
-
-
       </Wrapper>
 
     </Container>
