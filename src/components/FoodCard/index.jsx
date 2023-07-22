@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin }) {
+export function FoodCard({id, title, description, price, imgSrc, imgAlt, isAdmin }) {
 
   const [counterOrders, setcounterOrders] = useState(0);
 
@@ -25,9 +25,15 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
     setIsFavorite(!isFavorite);
   };
 
-  function handleEdit() {
+  function handleEditAdmin(id) {
 
-    navigate("/admindetails");
+    navigate(`/admindetails/${id}`);
+
+  }
+
+  function handleDetailsUser(id) {
+
+    navigate(`/details/${id}`);
 
   }
 
@@ -38,9 +44,8 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
 
       <i>
         {isAdmin ? (
-          <Link to="/admindetails">
-
-            <TiPencil onClick={Link} size={22} />
+          <Link to={`/admindetails/${id}`} >
+            <TiPencil onClick={()=> handleEditAdmin(id)} size={22} />
           </Link>
         ) : (
           isFavorite ? (
@@ -52,7 +57,7 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
       </i>
       
       {isAdmin ? (
-        <Link to="/admindetails">
+        <Link to={`/admindetails/${id}`}>
           <img src={imgSrc} alt={imgAlt} />
 
           <h2>{title}</h2>
@@ -60,17 +65,17 @@ export function FoodCard({ title, description, price, imgSrc, imgAlt, isAdmin })
           <p className="price">{price}</p>
         </Link>
       ) :
-        <a href="/details">
+        <Link to={`/details/${id}`}>
           <img src={imgSrc} alt={imgAlt} />
 
           <h2>{title}</h2>
           <p className="description">{description}</p>
           <p className="price">{price}</p>
-        </a>
+        </Link>
       }
 
       <Wrapper>
-        {isAdmin ? <button title={"Editar"} onClick={handleEdit}>Editar</button>
+        {isAdmin ? <button title={"Editar"} onClick={()=> handleEditAdmin(id)}>Editar</button>
           : [<IncrementDecrement />, <button onClick={handleOrders}>Incluir</button>]}
       </Wrapper>
 

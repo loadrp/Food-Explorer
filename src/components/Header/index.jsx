@@ -39,6 +39,16 @@ export function Header({ isAdmin, setSearchTerm }) {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  function handleHeaderClick(){
+    if (storedUser.role == "admin") {
+      navigate("/admin");
+      
+    } else {
+      navigate("/");
+     
+    }
+  }
+
   return (
     <Container>
       <DisplayMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} isAdmin={isAdmin} />
@@ -46,7 +56,7 @@ export function Header({ isAdmin, setSearchTerm }) {
         <FiMenu onClick={toggleMenu} />
         <div style={{ display: "flex", gap: "5px", whiteSpace: "nowrap" }}>
           <img src={Logo} width={30} height={30} alt='logo' />
-          <h2>Food Explorer</h2>
+          <h2 >Food Explorer</h2>
           {isAdmin == 'True' ? <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>admin</p> : <p></p>}
         </div>
 

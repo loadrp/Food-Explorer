@@ -1,4 +1,3 @@
-import { FiPlus, FiSearch } from 'react-icons/fi'
 import { Container, Brand, Menu, Search, Content, NewNote, Cards } from './styles'
 import { Header } from '../../components/Header'
 import { Link, useNavigate } from 'react-router-dom'
@@ -53,9 +52,10 @@ export function AdminHome({ }) {
   }
 
   function handleDetails(id) {
-    navigate(`/details/${id}`)
+    navigate(`/admindetails/${id}`)
 
   }
+
   useEffect(() => {
     async function fetchFoods() {
       const response = await api.get("/foods?title&tags&category");
@@ -69,6 +69,7 @@ export function AdminHome({ }) {
       if (debouncedSearchTerm !== "") {
         const response = await api.get(`/foods/search?searchQuery=${debouncedSearchTerm}`);
         setFoods(response.data);
+      
       } else {
         const response = await api.get("/foods?title&tags&category");
         setFoods(response.data);
@@ -76,8 +77,6 @@ export function AdminHome({ }) {
     }
     fetchFoods();
   }, [debouncedSearchTerm]);
-
-
 
   useEffect(() => {
 

@@ -9,9 +9,9 @@ export function AdminRoutes(){
   return(
     <Routes>
       <Route path='/admin' element={<AdminHome/>} />
-      <Route path='/admindetails' element={<AdminDetails/>}/>
+      <Route path='/admindetails/:id' element={<AdminDetails/>}/>
       <Route path='/newfood' element={<AdminNewFood/>}/>
-      <Route path='/editfood' element={<AdminEditFood/>}/>
+      <Route path='/editfood/:id' element={<AdminEditFood/>}/>
     </Routes>
 
   )

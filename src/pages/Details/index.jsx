@@ -19,95 +19,49 @@ export function Details() {
   function handleBack(){
     navigate("/");
   }
-  
-  async function handleRemove(){
-    const confirm =window.confirm("Deseja realmente remover esta nota?")
-    if(confirm){
-      await api.delete(`/notes/${params.id}`);
-      navigate("/")
-    }
+
+  function handleInclude(){
+    navigate("/");
   }
 
   useEffect(() => {
-    async function fetchNoteDetails() {
-      const response = await api.get(`/notes/${params.id}`)
-      setData(response.data)
+    async function fetchFoodDetails() {
+      const response = await api.get(`/foods/search/${params.id}`);
+      const data = response.data[0];
+      data.tag_name = data.tag_name.split(', ');
+      setData(data);
+      console.log(data);
     }
-    fetchNoteDetails()
-  }, []);
+    fetchFoodDetails();
+  }, [params.id]);
+
+  if (data === null) {
+    return <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</div>;
+  }
 
   return (
     <Container>
       <Header />
       {
-        
-            
+
         <main>
           <button onClick={handleBack}><BsChevronLeft/>Voltar</button>
           <Content>
-            <img src={PratoImg} alt="prato" />
-            <div className="details">
-              <h1>
-              Salada Ravanello
-              </h1>
-              <p>
-              Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.
-              </p>
-              <div className='div-tags'>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-              </div>
-              
-              <DetailsWrapper>
-              <div className='increments'>
-              <IncrementDecrement/>
-              <Button title="Incluir R$ 25,00" onClick={handleBack}>
-              </Button>
-              </div>
-              
-              </DetailsWrapper>
-              
+          { data.image ? 
+            <img width={390} height={389} src={data.image} alt="prato" /> :
+            <img width={390} height={389} src={PratoImg} alt="default" /> // definir a imagem padrão
+          }
+          <div className="details">
+            <h1>{data.name}</h1>
+            <p>{data.description}</p>
+            <div className='div-tags'>
+              {data.tag_name.map((tag, index) => <Tag key={index} title={tag} />)}
             </div>
-           
-
-            {/* {
-              data.links &&
-              <Section title="Links úteis">
-                <Links>
-                  {
-                    data.links.map(link => (
-                      <li key={String(link.id)}>
-                        <a href={link.url} target="_blank">
-                          {link.url}
-                        </a>
-                      </li>
-                    ))
-                  }
-
-                </Links>
-              </Section>
-            }
-
-            {
-              data.tags &&
-              <Section title="Marcadores">
-                {
-                  data.tags.map(tag => (
-                    <Tag key={String(tag.id)}
-                      title={tag.name} />
-                  ))
-
-                }
-                <Tag title="nodejs" />
-              </Section>
-            } */}
-
-            
-
-          </Content>
+            <DetailsWrapper>
+              <Button title="Incluir" onClick={handleInclude}></Button>
+            </DetailsWrapper>
+          </div>
+        </Content>
           
         </main>
       }

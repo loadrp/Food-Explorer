@@ -41,9 +41,9 @@ export function SliderCards ({ cardTitle, isAdmin, category, foods}) {
         <Slider>
           {foods?.slice(firstDisplayed, firstDisplayed + 5).map((food, index) => (
             <FoodCardWrapper key={index}>
-              
+              {console.log(foods)}
               <FoodCard
-               
+                id={food.id}
                 title={food.name}
                 description={food.description}
                 price={food.price}

@@ -20,98 +20,56 @@ export function AdminDetails() {
   }
 
   function handleEdit(){
-    navigate("/editfood");
+    navigate(`/editfood/${params.id}`);
   }
   
   async function handleRemove(){
     const confirm = window.confirm("Deseja realmente remover esta comida?")
     if(confirm){
       await api.delete(`/foods/${params.id}`);
-      navigate("/")
+      navigate("/admin")
     }
   }
 
   useEffect(() => {
-    async function fetchNoteDetails() {
-      const response = await api.get(`/foods/${params.id}`)
-      setData(response.data)
+    async function fetchFoodDetails() {
+      const response = await api.get(`/foods/search/${params.id}`);
+      const data = response.data[0];
+      data.tag_name = data.tag_name.split(', ');
+      setData(data);
+      console.log(data);
     }
-    fetchNoteDetails()
-  }, []);
+    fetchFoodDetails();
+  }, [params.id]);
+
+  if (data === null) {
+    return <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>Loading...</div>;
+  }
 
   return (
     <Container>
       <Header isAdmin={'True'} />
-      {
-       /* data &&*/
-            
-        <main>
-          <button onClick={handleBack}><BsChevronLeft size={20} />Voltar</button>
-          <Content>
-            <img width={390} height={389} src={PratoImg} alt="prato" />
-            <div className="details">
-              <h1>
-              Salada Ravanello
-              </h1>
-              <p>
-              Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.
-              </p>
-              <div className='div-tags'>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-                <Tag title={"Cebola"}/>
-              </div>
-              <DetailsWrapper>
-        
-              <Button title="Editar Prato" onClick={handleEdit}>
-              </Button>
-              </DetailsWrapper>
-              
+      <main>
+        <button onClick={handleBack}><BsChevronLeft size={20} />Voltar</button>
+        <Content>
+          { data.image ? 
+            <img width={390} height={389} src={data.image} alt="prato" /> :
+            <img width={390} height={389} src={PratoImg} alt="default" /> // definir a imagem padrão
+          }
+          <div className="details">
+            <h1>{data.name}</h1>
+            <p>{data.description}</p>
+            <div className='div-tags'>
+              {data.tag_name.map((tag, index) => <Tag key={index} title={tag} />)}
             </div>
-           
-
-            {/* {
-              data.links &&
-              <Section title="Links úteis">
-                <Links>
-                  {
-                    data.links.map(link => (
-                      <li key={String(link.id)}>
-                        <a href={link.url} target="_blank">
-                          {link.url}
-                        </a>
-                      </li>
-                    ))
-                  }
-
-                </Links>
-              </Section>
-            }
-
-            {
-              data.tags &&
-              <Section title="Marcadores">
-                {
-                  data.tags.map(tag => (
-                    <Tag key={String(tag.id)}
-                      title={tag.name} />
-                  ))
-
-                }
-                <Tag title="nodejs" />
-              </Section>
-            } */}
-
-            
-
-          </Content>
-          
-        </main>
-      }
+            <DetailsWrapper>
+              <Button title="Editar Prato" onClick={handleEdit}></Button>
+              <Button bgColor={"#333333"} title="Excluir Prato" onClick={handleRemove}></Button> 
+            </DetailsWrapper>
+          </div>
+        </Content>
+      </main>
       <Footer/>
-
     </Container>
-  )
+  );
 }

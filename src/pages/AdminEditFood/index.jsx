@@ -8,7 +8,7 @@ import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { api } from '../../services/api'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , useParams} from 'react-router-dom'
 import { BsChevronDown, BsChevronLeft, BsUpload } from 'react-icons/bs'
 import { Footer } from '../../components/Footer'
 
@@ -23,12 +23,13 @@ export function AdminEditFood() {
   const [newTag, setNewTag] = useState("");
 
   const navigate = useNavigate();
+  const params = useParams();
 
-  async function handleRemove() {
+  async function handleRemove(){
     const confirm = window.confirm("Deseja realmente remover esta comida?")
-    if (confirm) {
-      response = await api.delete(`/foods/${params.id}`);
-      navigate("/")
+    if(confirm){
+      await api.delete(`/foods/${params.id}`);
+      navigate("/admin")
     }
   }
 
