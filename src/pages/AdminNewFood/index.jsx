@@ -2,7 +2,6 @@ import { Header } from '../../components/Header'
 import { Container, Form, Wrapper } from './styles'
 import { Input } from '../../components/Input'
 import { Textarea } from '../../components/Textarea'
-import { Section } from '../../components/Section'
 import { Button } from '../../components/Button'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
@@ -66,11 +65,6 @@ export function AdminNewFood() {
       formData.append("category_name", category);
       formData.append("tags", JSON.stringify(tags));
       formData.append("image", image);
-
-      /*console.log(formData)
-      for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }*/
   
       await api.post("/foods", formData);
   

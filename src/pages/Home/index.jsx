@@ -1,8 +1,7 @@
-import { FiPlus, FiSearch } from 'react-icons/fi'
-import { Container, Brand, Menu, Search, Content, NewNote, Cards } from './styles'
+import { Container,Content } from './styles'
 import { Header } from '../../components/Header'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useState, useEffect} from 'react'
 import { api } from '../../services/api'
 import { HeroSection } from '../../components/Hero Section'
 import { Footer } from '../../components/Footer'
@@ -11,7 +10,6 @@ import { SliderCards } from '../../components/SliderCards'
 
 
 export function Home({ }) {
-  const [tags, setTags] = useState("");
   const [tagsSelected, setTagsSelected] = useState([]);
   const [foods, setFoods] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");

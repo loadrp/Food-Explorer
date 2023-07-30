@@ -6,7 +6,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { api } from '../../services/api'
 import { Footer } from '../../components/Footer'
-import  PratoImg  from '../../assets/prato1.png'
 import { BsChevronLeft } from 'react-icons/bs'
 
 

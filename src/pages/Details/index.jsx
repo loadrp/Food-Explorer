@@ -1,4 +1,4 @@
-import { Container, Links, Content, DetailsWrapper } from './styles'
+import { Container, Content, DetailsWrapper } from './styles'
 import { Button } from '../../components/Button'
 import { Header } from '../../components/Header'
 import { Tag } from '../../components/Tags'
@@ -8,8 +8,6 @@ import { api } from '../../services/api'
 import { Footer } from '../../components/Footer'
 import  PratoImg  from '../../assets/prato1.png'
 import { BsChevronLeft } from 'react-icons/bs'
-import IncrementDecrement from '../../components/IncrementalDecremental'
-
 
 export function Details() {
   const [data, setData] = useState(null);
